@@ -62,10 +62,58 @@ section {
     color: white;
     border: 0.1px solid white;
     border-radius: 8px;
-    padding: 5rem;
+    padding: 2.5rem;
 
 }
 
 .custom-bg-image {
-    /* transform: rotate(180deg); */
+    background-image: url('https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp');
 }
+
+
+.exo-text {
+    font-family: "Exo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+  .custom-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px) ;
+    transition: 0.2s ease-in-out;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-pink {
+    
+    color: mediumvioletred;
+    border: 1px solid mediumvioletred;
+  }
+
+  .btn-green {
+    border: 1px solid darkgreen;
+
+    color: darkgreen;
+  }
+
+
+
+  .btn-pink:hover {
+    background-color: violet;
+    color: white;
+    transform: scale(1.1);
+
+  }
+
+  .btn-green:hover {
+    background-color: green;
+    color: white;
+    transform: scale(1.1);
+
+  }
+
