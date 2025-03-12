@@ -3,8 +3,8 @@ import { connecttoDB } from "./db.js";
 import mongoose from "mongoose";
 import { Customer } from "./userlist.js";
 import cors from "cors"
+import { Gadget } from "./gadgetlist.js";
 
-const {Schema} = mongoose
 
 
 const app = express()
@@ -53,6 +53,21 @@ app.post("/createuser", async (req, res) => {
    
 })
 
+app.post('/allgadgets', async (req, res) => {
+    const {gadgetName, brand, model, resalePrice, originalPrice, salerName, sellerEmail, sellerPhone, datePosted, color, originalPurchaseDate, currentCondition, gadgetFeatures} = req.body
+    try {
+        const myGadget = await Gadget.create({
+            gadgetName: gadgetName, brand: brand, model: model, resalePrice: resalePrice, originalPrice: originalPrice, salerName: salerName, sellerEmail: sellerEmail, sellerPhone: sellerPhone, datePosted: datePosted, color: color, originalPurchaseDate: originalPurchaseDate, currentCondition: currentCondition, gadgetFeatures: gadgetFeatures
+        })
+        res.send("Gadget successfully created!" + myGadget)
+
+        console.log("Gadget successfully created!" + myGadget)
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).send("Error creating gadget")
+    }
+})
 
 
 

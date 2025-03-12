@@ -1,0 +1,163 @@
+export const gadgetData = [
+    {
+        "imgUrl": "",
+        "gadgetName": "Smartphone",
+        "brand": "Apple",
+        "model": "iPhone 13 Pro",
+        "resalePrice": "750",
+        "originalPrice": "999",
+        "salerName": "John Doe",
+        "sellerEmail": "johndoe@example.com",
+        "sellerPhone": "+1-234-567-8901",
+        "datePosted": "2025-03-09",
+        "color": "Graphite",
+        "originalPurchaseDate": "2023-12-15",
+        "currentCondition": "Excellent - No scratches, fully functional",
+        "gadgetFeatures": [
+            "6.1-inch Super Retina XDR display",
+            "A15 Bionic chip for lightning-fast performance",
+            "Triple-camera system with LiDAR scanner",
+            "5G enabled for ultra-fast connectivity",
+            "Ceramic Shield for improved durability",
+            "ProMotion technology with 120Hz refresh rate"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Laptop",
+        "brand": "Dell",
+        "model": "XPS 13",
+        "resalePrice": "950",
+        "originalPrice": "1200",
+        "salerName": "Alice Smith",
+        "sellerEmail": "alicesmith@example.com",
+        "sellerPhone": "+1-345-678-9012",
+        "datePosted": "2025-03-08",
+        "color": "Silver",
+        "originalPurchaseDate": "2023-11-20",
+        "currentCondition": "Very Good - Minor wear, fully functional",
+        "gadgetFeatures": [
+            "13.4-inch InfinityEdge 4K UHD+ display",
+            "Intel Core i7 11th Gen processor",
+            "16GB RAM and 512GB SSD storage",
+            "Ultra-thin and lightweight design",
+            "Long battery life up to 14 hours",
+            "Backlit keyboard with fingerprint reader"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Tablet",
+        "brand": "Samsung",
+        "model": "Galaxy Tab S7",
+        "resalePrice": "400",
+        "originalPrice": "650",
+        "salerName": "Michael Brown",
+        "sellerEmail": "michaelbrown@example.com",
+        "sellerPhone": "+1-456-789-0123",
+        "datePosted": "2025-03-07",
+        "color": "Mystic Black",
+        "originalPurchaseDate": "2023-09-10",
+        "currentCondition": "Good - Some scratches, works perfectly",
+        "gadgetFeatures": [
+            "11-inch LTPS TFT display with 120Hz refresh rate",
+            "Qualcomm Snapdragon 865+ processor",
+            "S Pen included with ultra-low latency",
+            "Quad speakers tuned by AKG with Dolby Atmos",
+            "Supports DeX mode for a PC-like experience",
+            "Large 8000mAh battery with fast charging"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Smartwatch",
+        "brand": "Garmin",
+        "model": "Fenix 6",
+        "resalePrice": "350",
+        "originalPrice": "600",
+        "salerName": "Emma Wilson",
+        "sellerEmail": "emmawilson@example.com",
+        "sellerPhone": "+1-567-890-1234",
+        "datePosted": "2025-03-06",
+        "color": "Titanium",
+        "originalPurchaseDate": "2023-08-25",
+        "currentCondition": "Like New - Barely used",
+        "gadgetFeatures": [
+            "1.3-inch always-on display with scratch-resistant glass",
+            "Advanced GPS and heart rate monitoring",
+            "Preloaded sports apps and performance metrics",
+            "Water-resistant up to 100 meters",
+            "Up to 14 days of battery life in smartwatch mode",
+            "Music storage and Garmin Pay support"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Headphones",
+        "brand": "Sony",
+        "model": "WH-1000XM4",
+        "resalePrice": "200",
+        "originalPrice": "350",
+        "salerName": "David Johnson",
+        "sellerEmail": "davidjohnson@example.com",
+        "sellerPhone": "+1-678-901-2345",
+        "datePosted": "2025-03-05",
+        "color": "Black",
+        "originalPurchaseDate": "2023-10-05",
+        "currentCondition": "Fair - Visible wear, works well",
+        "gadgetFeatures": [
+            "Industry-leading noise cancellation technology",
+            "Up to 30 hours of battery life",
+            "Touch controls for volume and playback",
+            "Multipoint connection for easy switching",
+            "Adaptive sound control based on activity",
+            "Quick charge: 10 minutes for 5 hours playback"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Gaming Console",
+        "brand": "Sony",
+        "model": "PlayStation 5",
+        "resalePrice": "450",
+        "originalPrice": "500",
+        "salerName": "Sophia Martinez",
+        "sellerEmail": "sophiamartinez@example.com",
+        "sellerPhone": "+1-789-012-3456",
+        "datePosted": "2025-03-04",
+        "color": "White",
+        "originalPurchaseDate": "2023-12-01",
+        "currentCondition": "Excellent - Hardly used, no damage",
+        "gadgetFeatures": [
+            "Ultra-high-speed SSD for lightning-fast loading",
+            "Ray tracing for realistic lighting and shadows",
+            "DualSense controller with haptic feedback",
+            "4K gaming with up to 120Hz refresh rate",
+            "3D Audio for immersive sound experience",
+            "Backward compatibility with PS4 games"
+        ]
+    },
+    {
+        "imgUrl": "",
+        "gadgetName": "Wireless Earbuds",
+        "brand": "Apple",
+        "model": "AirPods Pro",
+        "resalePrice": "180",
+        "originalPrice": "250",
+        "salerName": "Liam Anderson",
+        "sellerEmail": "liamanderson@example.com",
+        "sellerPhone": "+1-890-123-4567",
+        "datePosted": "2025-03-03",
+        "color": "White",
+        "originalPurchaseDate": "2023-06-18",
+        "currentCondition": "Very Good - Minor scratches, fully functional",
+        "gadgetFeatures": [
+            "Active noise cancellation for immersive sound",
+            "Transparency mode to hear surroundings",
+            "Sweat and water resistance",
+            "Adaptive EQ for rich, balanced audio",
+            "Up to 24 hours of battery life with case",
+            "Force sensor controls for easy interaction"
+        ]
+    }
+]

@@ -4,14 +4,24 @@ import mongoose from "mongoose";
 const {Schema} = mongoose
 
 
-export const gadgetSchema = new Schema({
+ const gadgetSchema = new Schema({
 
-name: {type: String, required: true},
-price: {type: String, required: true},
-dateSold: {type: Date, required: true},
-customerId: {type: String, required: true},
-brand: {type: String, required: true},
-colour: {type: String, required: true},
+    gadgetName: String,
+    brand: String,
+    model: String,
+    resalePrice: Number,
+    originalPrice: Number,
+    salerName: String,
+    sellerEmail: String,
+    sellerPhone: String,
+    datePosted: Date,
+    color: String,
+    originalPurchaseDate: Date,
+    currentCondition: String,
+    gadgetFeatures: String
+},
 
 
-})
+)
+
+export const Gadget = mongoose.model('Gadget', gadgetSchema)

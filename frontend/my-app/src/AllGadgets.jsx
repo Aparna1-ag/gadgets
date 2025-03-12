@@ -1,113 +1,88 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import img1 from "./assets/gadgets_image.png"
 import img2 from "./assets/custom_bg.png"
+import { gadgetData } from './gadgetData'
 
 
 const AllGadgets = () => {
 
-    let gadgetData = [
+const [email, setEmail] = useState('')
+const [phone, setPhone] = useState('')
 
-        {
-            imgUrl: "",
-            gadgetName: "Smartphone",
-            brand: "Apple",
-            model: "iPhone 13 Pro",
-            resalePrice: "750",
-            originalPrice: "999",
-            salerName: "John Doe",
-            datePosted: "2025-03-09",
-            color: "Graphite"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Laptop",
-            brand: "Dell",
-            model: "XPS 13",
-            resalePrice: "950",
-            originalPrice: "1200",
-            salerName: "Alice Smith",
-            datePosted: "2025-03-08",
-            color: "Silver"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Tablet",
-            brand: "Samsung",
-            model: "Galaxy Tab S7",
-            resalePrice: "400",
-            originalPrice: "650",
-            salerName: "Michael Brown",
-            datePosted: "2025-03-07",
-            color: "Mystic Black"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Smartwatch",
-            brand: "Garmin",
-            model: "Fenix 6",
-            resalePrice: "350",
-            originalPrice: "600",
-            salerName: "Emma Wilson",
-            datePosted: "2025-03-06",
-            color: "Titanium"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Headphones",
-            brand: "Sony",
-            model: "WH-1000XM4",
-            resalePrice: "200",
-            originalPrice: "350",
-            salerName: "David Johnson",
-            datePosted: "2025-03-05",
-            color: "Black"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Gaming Console",
-            brand: "Sony",
-            model: "PlayStation 5",
-            resalePrice: "450",
-            originalPrice: "500",
-            salerName: "Sophia Martinez",
-            datePosted: "2025-03-04",
-            color: "White"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Wireless Earbuds",
-            brand: "Apple",
-            model: "AirPods Pro",
-            resalePrice: "180",
-            originalPrice: "250",
-            salerName: "Liam Anderson",
-            datePosted: "2025-03-03",
-            color: "White"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Smart TV",
-            brand: "LG",
-            model: "OLED C1 55-inch",
-            resalePrice: "900",
-            originalPrice: "1400",
-            salerName: "Olivia Garcia",
-            datePosted: "2025-03-02",
-            color: "Black"
-        },
-        {
-            imgUrl: "",
-            gadgetName: "Camera",
-            brand: "Canon",
-            model: "EOS R5",
-            resalePrice: "2800",
-            originalPrice: "3500",
-            salerName: "Ethan Robinson",
-            datePosted: "2025-03-01",
-            color: "Black"
-        }
 
-    ]
+const [gadgetForm, setGadgetForm] = useState({
+  gadgetName: '',
+  brand: '',
+  model: '',
+  resalePrice: '',
+  originalPrice: '',
+  salerName: '',
+  sellerEmail: '',
+  sellerPhone: '',
+  originalPurchaseDate: '',
+  datePosted: '',
+  gadgetFeatures: '',
+  currentCondition: '',
+  
+
+
+
+})
+
+const todaysDate = new Date()
+const dateOfPosting = todaysDate.toDateString()
+
+
+
+const handleChange = (e) => {
+  
+    setGadgetForm((gadgetForm) => {
+      return (
+        {...gadgetForm, [e.target.name] : e.target.value}
+      )
+    })
+ 
+
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+  let myUrl = 'http://localhost:3300/allgadgets'
+ try {
+  fetch(myUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({...gadgetForm, datePosted: dateOfPosting})
+  })
+  console.log(gadgetForm)
+  // .then(res => res.json()).then(console.log(data))
+ } catch (err) {
+  console.log(err)
+ }
+
+}
+
+
+useEffect(() => {
+ const contactModal = document.getElementById('contact-info-modal')
+ 
+ contactModal.addEventListener('show.bs.modal', (e) => {
+  const modalBtn = e.relatedTarget
+   setEmail(modalBtn.getAttribute('data-bs-email'))
+   setPhone(modalBtn.getAttribute('data-bs-phone'))
+
+ } )
+
+ return () => {
+  contactModal.removeEventListener('show.bs.modal', () => {} )
+ }
+
+
+}, [])
+
+  
     return (
 
 
@@ -130,6 +105,10 @@ const AllGadgets = () => {
 
 
                     <div className='w-full absolute top-0 left-0 custom-bg-image'>
+
+                     <div className='flex justify-center w-full py-5'> <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#post-new-gadget-modal' >  Post Your Gadget</button></div>
+
+
                 <div className='row mx-auto' style={{width: '90%'}}>
 
                     {
@@ -157,7 +136,7 @@ const AllGadgets = () => {
                                       <div> Seller: {item.salerName}
 
                                       </div>
-                                      <div className='mt-5'>  Original Price: {item.originalPrice}$ 
+                                      <div className='mt-5'>  Purchased on: {item.originalPurchaseDate} 
                                           </div>
 
                                       <div>Posted on: <span className='font-bold'> {item.datePosted}</span>
@@ -208,8 +187,11 @@ const AllGadgets = () => {
 
 
                                     <div className='flex justify-between w-3/4 mx-auto mt-5'>
-                                     <button className=' custom-btn btn-green mr-4' data-bs-toggle="modal" data-bs-target="#contact-info-modal"> <i class="fa-solid fa-address-card mr-1"></i> Contact Seller</button>
+                                     <button className=' custom-btn btn-green mr-4' data-bs-toggle="modal" data-bs-target="#contact-info-modal" data-bs-email={item.sellerEmail}  data-bs-phone={item.sellerPhone} > <i class="fa-solid fa-address-card mr-1"></i> Contact Seller</button>
                                      <button className='custom-btn btn-pink '> <i class="fa-solid fa-forward mr-1"></i>  More Details</button>
+
+                                
+
                                         </div>
                                     
                                     
@@ -245,8 +227,8 @@ const AllGadgets = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div  className='mt-1'>Email: <span className='font-bold'>abc@email.com</span></div>
-        <div className='mt-3'>Phone: <span className='font-bold'>9964645363</span></div>
+        <div  className='mt-1'>Email: <span className='font-bold'>{email}</span></div>
+        <div className='mt-3'>Phone: <span className='font-bold'>{phone}</span></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm bg-gradient" data-bs-dismiss="modal" style={{background: "#192035"}}>Close</button>
@@ -254,6 +236,88 @@ const AllGadgets = () => {
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="post-new-gadget-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " style={{color: "#192035"}} id="exampleModalLabel">Post New Gadget:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form className='' onSubmit={handleSubmit}> 
+      <div class="modal-body">
+      
+       <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Gadget Name:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="gadgetName" value={gadgetForm.gadgetName} onChange={handleChange} required />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Brand:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="brand"  value={gadgetForm.brand} onChange={handleChange} required />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Model:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="model"  value={gadgetForm.model} onChange={handleChange} required />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Original Price:</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="originalPrice"  value={gadgetForm.originalPrice} onChange={handleChange} required />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Resale Price:</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="resalePrice"  value={gadgetForm.resalePrice} onChange={handleChange} required />
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Originally Purchased on:</label>
+    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="originalPurchaseDate" value={gadgetForm.originalPurchaseDate} onChange={handleChange} required />
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Describe features:</label>
+    <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='13.4-inch InfinityEdge 4K UHD+ display' name="gadgetFeatures" value={gadgetForm.gadgetFeatures} onChange={handleChange}  required>
+       </textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Describe Current Condition:</label>
+    <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='' name="currentCondition" value={gadgetForm.currentCondition} onChange={handleChange} required>
+       </textarea>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Your email:</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="sellerEmail" value={gadgetForm.sellerEmail} onChange={handleChange} required />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Your contact:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="sellerPhone" value={gadgetForm.sellerPhone} onChange={handleChange} required />
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Your Name:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="salerName" value={gadgetForm.salerName} onChange={handleChange} required />
+  </div>
+      
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-success btn-sm bg-gradient" style={{background: ""}}>Post</button>
+      
+
+        <button type="button" class="btn btn-secondary btn-sm bg-gradient" data-bs-dismiss="modal" style={{background: "#192035"}}>Close</button>
+
+      </div>
+      </form>
+    
+    </div>
+  </div>
+</div>
+
+
+
+  
           
 
         </div>
