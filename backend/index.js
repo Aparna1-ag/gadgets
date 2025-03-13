@@ -59,7 +59,7 @@ app.post('/allgadgets', async (req, res) => {
         const myGadget = await Gadget.create({
             gadgetName: gadgetName, brand: brand, model: model, resalePrice: resalePrice, originalPrice: originalPrice, salerName: salerName, sellerEmail: sellerEmail, sellerPhone: sellerPhone, datePosted: datePosted, color: color, originalPurchaseDate: originalPurchaseDate, currentCondition: currentCondition, gadgetFeatures: gadgetFeatures
         })
-        res.send("Gadget successfully created!" + myGadget)
+        res.status(200).send({success: true, message: `Your gadget ${brand} - ${model} has been posted successfully!`})
 
         console.log("Gadget successfully created!" + myGadget)
 
@@ -69,6 +69,19 @@ app.post('/allgadgets', async (req, res) => {
     }
 })
 
+
+app.get('/allgadgets', async (req, res) => {
+   try {
+    const myDbData = await Gadget.find()
+    res.json(myDbData)
+   } catch (err) {
+    res.status(500).json({message : "Error fetching collection"})
+   }
+})
+
+
+
+// Gadget.insertMany(mydata)
 
 
 

@@ -6,6 +6,7 @@ import MyForm from './Myform';
 import {BrowserRouter as Router, Routes, Route} from "react-router"
 import AllGadgets from './AllGadgets';
 import Home from './Home';
+import GadgetDetails from './GadgetDetails';
 
 
 
@@ -21,6 +22,7 @@ function App() {
 
     <Route path='/register' element={<MyForm />}  />
     <Route path='/allgadgets' element={<AllGadgets />} />
+    <Route path='/gadgetdetails/:id' element={<GadgetDetails />} />
   </Routes>
 
 

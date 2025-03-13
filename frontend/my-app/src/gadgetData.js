@@ -20,7 +20,7 @@ export const gadgetData = [
             "5G enabled for ultra-fast connectivity",
             "Ceramic Shield for improved durability",
             "ProMotion technology with 120Hz refresh rate"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -43,7 +43,7 @@ export const gadgetData = [
             "Ultra-thin and lightweight design",
             "Long battery life up to 14 hours",
             "Backlit keyboard with fingerprint reader"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -66,7 +66,7 @@ export const gadgetData = [
             "Quad speakers tuned by AKG with Dolby Atmos",
             "Supports DeX mode for a PC-like experience",
             "Large 8000mAh battery with fast charging"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -89,7 +89,7 @@ export const gadgetData = [
             "Water-resistant up to 100 meters",
             "Up to 14 days of battery life in smartwatch mode",
             "Music storage and Garmin Pay support"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -112,7 +112,7 @@ export const gadgetData = [
             "Multipoint connection for easy switching",
             "Adaptive sound control based on activity",
             "Quick charge: 10 minutes for 5 hours playback"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -135,7 +135,7 @@ export const gadgetData = [
             "4K gaming with up to 120Hz refresh rate",
             "3D Audio for immersive sound experience",
             "Backward compatibility with PS4 games"
-        ]
+        ].join(", ")
     },
     {
         "imgUrl": "",
@@ -158,6 +158,6 @@ export const gadgetData = [
             "Adaptive EQ for rich, balanced audio",
             "Up to 24 hours of battery life with case",
             "Force sensor controls for easy interaction"
-        ]
+        ].join(", ")
     }
 ]
