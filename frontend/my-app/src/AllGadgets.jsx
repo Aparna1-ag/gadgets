@@ -178,10 +178,12 @@ const AllGadgets = () => {
             <div className="flex justify-center w-full py-5">
                
               <button
-                className="btn btn-primary"
+                className="btn btn-primary btn-lg bg-gradient"
                 data-bs-toggle="modal"
                 data-bs-target="#post-new-gadget-modal"
               >
+
+<i class="fa-solid fa-plus mr-1"></i>
                  
                 Post Your Gadget
               </button>
@@ -236,83 +238,9 @@ const AllGadgets = () => {
                           </div>
                         </div>
 
-                        {/* <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQTR3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1687660671097" className='w-40 h-40' /> */}
+                        <img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='w-40 h-40' />
 
-                        <div
-                          id="carouselExampleIndicators"
-                          className="carousel slide w-48 h-48"
-                          data-bs-ride="carousel"
-                        >
-                          <div className="carousel-indicators">
-                            <button
-                              type="button"
-                              data-bs-target="#carouselExampleIndicators"
-                              data-bs-slide-to="0"
-                              className="active"
-                              aria-current="true"
-                              aria-label="Slide 1"
-                            ></button>
-                            <button
-                              type="button"
-                              data-bs-target="#carouselExampleIndicators"
-                              data-bs-slide-to="1"
-                              aria-label="Slide 2"
-                            ></button>
-                            <button
-                              type="button"
-                              data-bs-target="#carouselExampleIndicators"
-                              data-bs-slide-to="2"
-                              aria-label="Slide 3"
-                            ></button>
-                          </div>
-                          <div className="carousel-inner">
-                            <div className="carousel-item active ">
-                              <img
-                                src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQTR3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1687660671097"
-                                className="d-block w-100"
-                                alt="..."
-                              />
-                            </div>
-                            <div className="carousel-item">
-                              <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGZdex_bY3K7zG3xjoayc_k2VfZPaiPXu11SqgKdSmt2YHiAN2ahvksBIC9ScxAiRcbtk&usqp=CAU"
-                                className="d-block w-100"
-                                alt="..."
-                              />
-                            </div>
-                            <div className="carousel-item">
-                              <img
-                                src="https://static.bhphoto.com/images/multiple_images/images500x500/1389748872_IMG_364121.jpg"
-                                className="d-block w-100"
-                                alt="..."
-                              />
-                            </div>
-                          </div>
-                          <button
-                            className="carousel-control-prev"
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev"
-                          >
-                            <span
-                              className="carousel-control-prev-icon"
-                              aria-hidden="true"
-                            ></span>
-                            <span className="visually-hidden">Previous</span>
-                          </button>
-                          <button
-                            className="carousel-control-next"
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next"
-                          >
-                            <span
-                              className="carousel-control-next-icon"
-                              aria-hidden="true"
-                            ></span>
-                            <span className="visually-hidden">Next</span>
-                          </button>
-                        </div>
+                     
                       </div>
 
                       <div className="flex justify-between w-3/4 mx-auto mt-5">
