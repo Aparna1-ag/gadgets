@@ -18,7 +18,8 @@ const {Schema} = mongoose
     color: String,
     originalPurchaseDate: Date,
     currentCondition: String,
-    gadgetFeatures: String
+    gadgetFeatures: String,
+    imgUrl: [String]
 },
 
 

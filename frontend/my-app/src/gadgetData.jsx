@@ -1,6 +1,10 @@
 export const gadgetData = [
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056291/s7rathrocmr1j6bzjan1.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056292/hlrqmd9n5rqihefw9nfv.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056294/hlq9pxl6gdoblgpublc3.png"
+          ],
         "gadgetName": "Smartphone",
         "brand": "Apple",
         "model": "iPhone 13 Pro",
@@ -23,7 +27,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056220/etv6n3ibihkky0skapgr.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056222/g0btihbcurg3bwgmcako.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056230/bcawhepifoyjztvdktko.png"
+          ],
         "gadgetName": "Laptop",
         "brand": "Dell",
         "model": "XPS 13",
@@ -46,7 +54,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742049897/foppys97ldnrienaqcgb.jpg",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742049898/ngrax1r4dwbracd4zvpj.jpg",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742049899/hqxshqokdiqwiyaa9bur.jpg"
+          ],
         "gadgetName": "Tablet",
         "brand": "Samsung",
         "model": "Galaxy Tab S7",
@@ -69,7 +81,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056291/s7rathrocmr1j6bzjan1.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056292/hlrqmd9n5rqihefw9nfv.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056294/hlq9pxl6gdoblgpublc3.png"
+          ],
         "gadgetName": "Smartwatch",
         "brand": "Garmin",
         "model": "Fenix 6",
@@ -92,7 +108,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056220/etv6n3ibihkky0skapgr.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056222/g0btihbcurg3bwgmcako.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056230/bcawhepifoyjztvdktko.png"
+          ],
         "gadgetName": "Headphones",
         "brand": "Sony",
         "model": "WH-1000XM4",
@@ -115,7 +135,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056291/s7rathrocmr1j6bzjan1.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056292/hlrqmd9n5rqihefw9nfv.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056294/hlq9pxl6gdoblgpublc3.png"
+          ],
         "gadgetName": "Gaming Console",
         "brand": "Sony",
         "model": "PlayStation 5",
@@ -138,7 +162,11 @@ export const gadgetData = [
         ].join(", ")
     },
     {
-        "imgUrl": "",
+        "imgUrl": [
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056220/etv6n3ibihkky0skapgr.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056222/g0btihbcurg3bwgmcako.png",
+            "https://res.cloudinary.com/djm2auk8o/image/upload/v1742056230/bcawhepifoyjztvdktko.png"
+          ],
         "gadgetName": "Wireless Earbuds",
         "brand": "Apple",
         "model": "AirPods Pro",
