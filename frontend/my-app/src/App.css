@@ -2,7 +2,7 @@
 
 
 .wrapper {
-    height: 100vh;
+    height: 200vh;
     perspective: 20px;
     /* transform-style: preserve-3d;
     position: relative; */
@@ -14,10 +14,10 @@ header {
     position: relative;
     z-index: -1;
     transform-style: preserve-3d;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    align-items: center; */
+    height: 200vh;
 }
 
 

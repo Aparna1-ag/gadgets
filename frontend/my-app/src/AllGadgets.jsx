@@ -15,6 +15,7 @@ const AllGadgets = () => {
   const [uploadedFile, setUploadedFile] = useState([]);
   const [cloudImgUrls, setCloudImgUrls] = useState([]);
 
+
   const [gadgetForm, setGadgetForm] = useState({
     gadgetName: "",
     brand: "",
@@ -29,6 +30,29 @@ const AllGadgets = () => {
     gadgetFeatures: "",
     currentCondition: "",
   });
+
+  const [startIndex, setStartIndex] = useState(0)
+
+  let endIndex = startIndex + 6
+
+
+
+  let arraysPerPage = fetchedData.slice(startIndex, endIndex)
+
+
+const paginationBtns = arraysPerPage.map((item, index) =>  {
+  return (
+    <div key={index}>
+         <button  className="btn btn-primary w-10 h-10 ml-3 bg-gradient" onClick={() => {setStartIndex(6 * index)}}> {index} </button>
+
+    </div>
+  )
+}
+)
+
+
+
+ 
 
   const todaysDate = new Date();
   const dateOfPosting = todaysDate.toDateString();
@@ -164,15 +188,14 @@ const AllGadgets = () => {
             className="mybackground"
           />
           {/* <img src={img1} className='myforeground'  /> */}
-          <h1 className="text-white">
+          <h1 className="text-white mt-20 mx-20">
             Welcome to the Ultimate Gadget Resale spot!
           </h1>
-        </header>
 
-        <div className="relative">
+          <div className="">
           {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
 
-          <div className="w-full absolute top-0 left-0 custom-bg-image">
+          <div className="">
             <div className="mx-32 text-white">{successMessage}</div>
 
             <div className="flex justify-center w-full py-5">
@@ -183,7 +206,7 @@ const AllGadgets = () => {
                 data-bs-target="#post-new-gadget-modal"
               >
 
-<i class="fa-solid fa-plus mr-1"></i>
+<i className="fa-solid fa-plus mr-1"></i>
                  
                 Post Your Gadget
               </button>
@@ -203,7 +226,7 @@ const AllGadgets = () => {
             /> */}
 
             <div className="row mx-auto" style={{ width: "90%" }}>
-              {fetchedData.map((item, index) => {
+              {arraysPerPage.map((item, index) => {
                 return (
                   <div className="col-md-6 mb-4" key={index}>
                     <div className="gadget-cards ">
@@ -274,6 +297,13 @@ const AllGadgets = () => {
             </div>
           </div>
         </div>
+
+        <div className="text-white flex justify-center w-full">
+        {paginationBtns}
+        </div>
+        </header>
+
+       
       </div>
 
       <div
