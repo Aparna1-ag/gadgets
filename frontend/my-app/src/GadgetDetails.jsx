@@ -39,6 +39,9 @@ const GadgetDetails = () => {
       }
       fetchgadgetData()
     }, [])
+
+
+    const markUpPercentage = (myGadgetData.resalePrice ) * 100/myGadgetData.originalPrice
     
 
 
@@ -104,14 +107,14 @@ const GadgetDetails = () => {
 
 <div className='w-full mt-5'>
  <div className='flex justify-between'>
- <div className='px-4 py-4 mt-2 shadow-xl   hover:bg-slate-400 hover:text-white'> Resale Price:  <span className='font-bold'>            ${myGadgetData.resalePrice}
+ <div className='px-4 py-4 mt-2 shadow-xl   hover:bg-slate-400 hover:text-white'> Resale Price:  <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-info font-bold'>({markUpPercentage}%)</span>
   </span>
   </div>
  <div className='flex '>
- <div className='px-4 py-4 mt-2 shadow-xl  hover:bg-slate-400 hover:text-white'> Original Price:  <span className='font-bold'>            ${myGadgetData.originalPrice}
+ <div className='px-4 py-4 mt-2 shadow-xl  hover:bg-slate-400 hover:text-white'> Original Price:  <span className='font-bold'>            ${myGadgetData.originalPrice}  
   </span>
   </div>
-  <div className=' ml-3 px-4 py-4 mt-2 shadow-xl  hover:bg-slate-400 hover:text-white'> Originally purchased on:  <span className='font-bold'>            ${myGadgetData.originalPurchaseDate}
+  <div className=' ml-3 px-4 py-4 mt-2 shadow-xl  hover:bg-slate-400 hover:text-white'> Originally purchased on:  <span className='font-bold'>            {myGadgetData.originalPurchaseDate}
   </span>
   </div>
  </div>

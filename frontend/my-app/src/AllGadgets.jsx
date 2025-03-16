@@ -14,6 +14,9 @@ const AllGadgets = () => {
 
   const [uploadedFile, setUploadedFile] = useState([]);
   const [cloudImgUrls, setCloudImgUrls] = useState([]);
+  const [loaderDisplay, setLoaderDisplay] = useState("hidden")
+
+
 
 
   const [gadgetForm, setGadgetForm] = useState({
@@ -52,10 +55,12 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
 
 
 
+
+
  
 
   const todaysDate = new Date();
-  const dateOfPosting = todaysDate.toDateString();
+  const dateOfPosting = todaysDate.toDateString('en-GB', {date: 'numeric', month: 'long', year: 'numeric'});
 
   const handleFileChange =  (e) => {
     const images =  [...e.target.files];
@@ -130,6 +135,9 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    document.getElementById("post-new-gadget-modal").style.display = "none";
+
+    setLoaderDisplay("block")
     const uploadedImgs = await handleFileUpload()
     // if (uploadedImgs.length === 0) {
     //   setSuccessMessage("No images Uploaded")
@@ -155,8 +163,12 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
       const resultData = await result.json();
 
       if (result.ok) {
+        setLoaderDisplay("hidden")
         setSuccessMessage(resultData.message);
-        document.getElementById("post-new-gadget-modal").style.display = "none";
+
+        setTimeout(() => {
+            window.location.reload()
+        }, 7000)
       } else if (!result.ok) {
         throw new Error();
       }
@@ -181,7 +193,11 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
 
   return (
     <div>
+
+     
       <div className="wrapper">
+
+      <div className={`fixed top-0 left-0 w-screen h-screen bg-amber-500 flex justify-center overflow-hidden items-center ${loaderDisplay}`}><h2>Loading...</h2></div>
         <header>
           <img
             src="https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp"
@@ -196,7 +212,7 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
           {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
 
           <div className="">
-            <div className="mx-32 text-white">{successMessage}</div>
+            <div className="mx-32 text-white"><h2>{successMessage}</h2></div>
 
             <div className="flex justify-center w-full py-5">
                

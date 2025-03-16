@@ -14,9 +14,9 @@ const {Schema} = mongoose
     salerName: String,
     sellerEmail: String,
     sellerPhone: String,
-    datePosted: Date,
+    datePosted: String,
     color: String,
-    originalPurchaseDate: Date,
+    originalPurchaseDate: String,
     currentCondition: String,
     gadgetFeatures: String,
     imgUrl: [String]
