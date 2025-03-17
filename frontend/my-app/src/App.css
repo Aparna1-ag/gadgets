@@ -18,6 +18,7 @@ header {
     justify-content: center;
     align-items: center; */
     height: 200vh;
+
 }
 
 
@@ -51,7 +52,14 @@ section {
     height: 500px;
     color: white;
     padding: 20px; */
+
+   
     
+}
+
+.gadget-name {
+  
+  -webkit-text-stroke: 1px teal;
 }
 
 
@@ -63,6 +71,7 @@ section {
     border: 0.1px solid white;
     border-radius: 8px;
     padding: 2.5rem;
+    box-shadow: inset -10px -10px 8px rgba(255, 255, 255, 0.4);
 
 }
 

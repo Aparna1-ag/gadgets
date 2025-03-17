@@ -197,16 +197,22 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
      
       <div className="wrapper">
 
-      <div className={`fixed top-0 left-0 w-screen h-screen bg-amber-500 flex justify-center overflow-hidden items-center ${loaderDisplay}`}><h2>Loading...</h2></div>
+      <div className={`fixed top-0 left-0 w-screen h-screen   flex justify-center overflow-hidden items-center ${loaderDisplay}`} style={{background: "white"}}  > 
+       <div>
+       <img src="https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif" className="w-28 h-28 mx-auto" />  <h3 className="text-center mt-5">Posting Your Gadget </h3>
+       </div>
+        </div>
         <header>
           <img
             src="https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp"
             className="mybackground"
           />
           {/* <img src={img1} className='myforeground'  /> */}
-          <h1 className="text-white mt-20 mx-20">
+         <div className="flex justify-center items-center" style={{height: "400px"}}>
+         <h1 className="text-white">
             Welcome to the Ultimate Gadget Resale spot!
           </h1>
+         </div>
 
           <div className="">
           {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
@@ -245,7 +251,7 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
               {arraysPerPage.map((item, index) => {
                 return (
                   <div className="col-md-6 mb-4" key={index}>
-                    <div className="gadget-cards ">
+                    <div className="gadget-cards  ">
                       <div className="flex justify-between">
                         <div>
                           <div className="text-xl exo-text">
