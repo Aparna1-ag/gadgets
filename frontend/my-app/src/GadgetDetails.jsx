@@ -60,7 +60,7 @@ const GadgetDetails = () => {
 
 
 
-<div className='w-5/6 mx-auto py-6'>
+<div className='w-5/6 mx-auto py-6 mt-24'>
 
 <h1 className='gadget-name my-6'>{myGadgetData.brand}  -
 {myGadgetData.model} </h1>

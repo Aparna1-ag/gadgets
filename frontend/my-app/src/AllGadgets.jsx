@@ -3,6 +3,7 @@ import img1 from "./assets/gadgets_image.png";
 import img2 from "./assets/custom_bg.png";
 // import { gadgetData } from './gadgetData'
 import { Link } from "react-router";
+import Navbar from "./Navbar";
 
 const AllGadgets = () => {
   const [email, setEmail] = useState("");
@@ -45,8 +46,8 @@ const AllGadgets = () => {
 
 const paginationBtns = arraysPerPage.map((item, index) =>  {
   return (
-    <div key={index}>
-         <button  className="btn btn-primary w-10 h-10 ml-3 bg-gradient" onClick={() => {setStartIndex(6 * index)}}> {index} </button>
+    <div key={index} className="mx-2">
+         <button  className="btn btn-primary w-10 h-10 bg-gradient" onClick={() => {setStartIndex(6 * index)}}> {index + 1} </button>
 
     </div>
   )
@@ -197,7 +198,11 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
      
       <div className="wrapper">
 
+        <Navbar />
+
       <div className={`fixed top-0 left-0 w-screen h-screen   flex justify-center overflow-hidden items-center ${loaderDisplay}`} style={{background: "white"}}  > 
+
+
        <div>
        <img src="https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif" className="w-28 h-28 mx-auto" />  <h3 className="text-center mt-5">Posting Your Gadget </h3>
        </div>
@@ -250,7 +255,7 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
             <div className="row mx-auto" style={{ width: "90%" }}>
               {arraysPerPage.map((item, index) => {
                 return (
-                  <div className="col-md-6 mb-4" key={index}>
+                  <div className="col-md-6 mb-4 " key={index}>
                     <div className="gadget-cards  ">
                       <div className="flex justify-between">
                         <div>
@@ -283,7 +288,13 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
                           </div>
                         </div>
 
-                        <img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='w-40 h-40' />
+                       
+
+                        <Link
+                          to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='w-40 h-40' />
+
+</Link> 
+                
 
                      
                       </div>
@@ -320,9 +331,11 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
           </div>
         </div>
 
-        <div className="text-white flex justify-center w-full">
+      <div className=" w-96 mx-auto mt-5">
+      <div className="text-white flex">
         {paginationBtns}
         </div>
+      </div>
         </header>
 
        
