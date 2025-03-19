@@ -46,12 +46,12 @@ const AllGadgets = () => {
 
   let arraysPerPage = fetchedData.slice(startIndex, endIndex)
 
-  let noOfBtns = Math.floor(fetchedData.length/6)
+  let noOfBtns = Math.floor((fetchedData.length/6) + 1)
   console.log(noOfBtns)
  
 const arrayForMapping = (start, end) => Array.from({length: end - start}, (_ ,i ) => 0 + i )
 
-const btnsArray = arrayForMapping(0, (noOfBtns + 1))
+const btnsArray = arrayForMapping(0, noOfBtns)
 console.log(btnsArray)
 
 
