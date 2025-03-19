@@ -2,6 +2,7 @@
 
 
 .wrapper {
+    /* height: 100vh; */
     height: 100vh;
     perspective: 20px;
   
@@ -47,16 +48,15 @@ header {
 
 }
 
-section {
-    /* background-image: url('https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp'); */
-    /* background-color: #01121B;
+/* section {
+    background-image: url('https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp');
     height: 500px;
     color: white;
-    padding: 20px; */
+    padding: 20px;
 
    
     
-}
+} */
 
 .gadget-name {
   

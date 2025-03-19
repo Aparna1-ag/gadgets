@@ -14,7 +14,6 @@ const AllGadgets = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   const [uploadedFile, setUploadedFile] = useState([]);
-  const [cloudImgUrls, setCloudImgUrls] = useState([]);
   const [loaderDisplay, setLoaderDisplay] = useState("hidden")
 
 
@@ -38,6 +37,10 @@ const AllGadgets = () => {
   const [startIndex, setStartIndex] = useState(0)
 
   let endIndex = startIndex + 6
+
+  if (endIndex === fetchedData.length) {
+    endIndex = fetchedData.length - 1
+  } 
 
 
 
@@ -194,33 +197,39 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
 
   return (
     <div>
+ <Navbar  />
 
+ <div className={`fixed top-0 left-0 w-screen h-screen  z-40 flex justify-center overflow-hidden items-center ${loaderDisplay}`} style={{background: "white"}}  >    
+
+
+<div>
+<img src="https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif" className="w-28 h-28 mx-auto" />  <h3 className="text-center mt-5">Posting Your Gadget </h3>
+</div>
+ </div>
      
       <div className="wrapper">
 
-        <Navbar />
+     
 
-      <div className={`fixed top-0 left-0 w-screen h-screen   flex justify-center overflow-hidden items-center ${loaderDisplay}`} style={{background: "white"}}  > 
-
-
-       <div>
-       <img src="https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif" className="w-28 h-28 mx-auto" />  <h3 className="text-center mt-5">Posting Your Gadget </h3>
-       </div>
-        </div>
+   
         <header>
+       
           <img
             src="https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp"
             className="mybackground"
           />
           {/* <img src={img1} className='myforeground'  /> */}
-         <div className="flex justify-center items-center" style={{height: "400px"}}>
+         <div className="flex justify-center items-center" style={{height: "100vh"}}>
          <h1 className="text-white">
             Welcome to the Ultimate Gadget Resale spot!
           </h1>
          </div>
 
-          <div className="">
+          <div className="relative ">
           {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
+          <div className='absolute top-0 left-0 w-full custom-bg-image'>
+
+          </div>
 
           <div className="">
             <div className="mx-32 text-white"><h2>{successMessage}</h2></div>
@@ -314,7 +323,7 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
 
                         <Link
                           to={`/gadgetdetails/${item._id}`}
-                          className="no-underline"
+                          className="no-underline text-decoration-none"
                         >
                           <div className="custom-btn btn-pink ">
                              

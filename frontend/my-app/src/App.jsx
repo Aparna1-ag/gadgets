@@ -19,10 +19,13 @@ function App() {
 <Router>
   
   <Routes>
-  <Route path='/' element={<Home />}  />
+  {/* <Route path='/' element={<Home />}  /> */}
+  <Route path='/' element={<AllGadgets />}  />
+
 
     <Route path='/register' element={<MyForm />}  />
-    <Route path='/allgadgets' element={<AllGadgets />} />
+    {/* <Route path='/allgadgets' element={<AllGadgets />} /> */}
+    
     <Route path='/gadgetdetails/:id' element={<GadgetDetails />} />
     <Route path='/demo'  element={<Demo/>} />
   </Routes>

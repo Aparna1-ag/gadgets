@@ -49,6 +49,24 @@ const GadgetDetails = () => {
       
     }
 
+    let todaysDate = new Date()
+    
+    let postDate = new Date(myGadgetData.datePosted)
+
+    let productDate = new Date(myGadgetData.originalPurchaseDate)
+
+    const diffPost = todaysDate - postDate
+    const diffAge = todaysDate - productDate
+
+    const diffPosting = (Math.floor(diffPost/(1000 * 60 * 60 * 24)))
+
+    const productAge = Math.floor(diffAge/(1000 * 60 * 60 * 24 * 30))
+
+
+
+
+
+
     
 
   return (
@@ -62,34 +80,52 @@ const GadgetDetails = () => {
 
 <div className='w-5/6 mx-auto py-6 mt-24'>
 
-<h1 className='gadget-name my-6'>{myGadgetData.brand}  -
+<h1 className='gadget-name mt-6 mb-20'>{myGadgetData.brand}  -
 {myGadgetData.model} </h1>
 
 
-<div id="carouselExampleControls "  className="carousel slide" data-ride="carousel">
+{ !myGadgetData.imgUrl  || myGadgetData.imgUrl.length == 0 ?
+  <div className='w-full flex justify-center'>
+  <img className="shadow-2xl" alt="Yoo"  style={{width:'50%', height: '400px'}} src='https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' /> 
+    </div>   :    <div id="carouselExampleControls"  className="carousel slide" data-ride="carousel">
   <div  className="carousel-inner">
-
-
-    {myGadgetData.imgUrl || myGadgetData.imgUrl?.length > 0 ? myGadgetData.imgUrl.map((item, index) => {
+    
+    
+   { myGadgetData.imgUrl.map((item, index) => {
       return (
         <div key={index} className={`carousel-item ${item == myGadgetData.imgUrl[0] ? 'active' : ''}`}>
-        <img  className="d-block mx-auto" src={item} alt="Second slide"  style={{width:'80%', height: '500px', objectFit: 'cover'}} />
+        <img  className="d-block mx-auto" src={item} alt="Second slide"  style={{width:'50%', height: '400px', objectFit: 'cover'}} />
       </div>
       )
-    }) :         <div className={`carousel-item shadow-2xl active`}>
-<img className="d-block shadow-2xl" alt="Second slide"  style={{width:'100%', height: '400px'}} src='https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' /> 
-</div>
-}
-  </div>
+    }) }
+    
+    </div>
   <button  className="carousel-control-prev" data-bs-target="#carouselExampleControls" role="button" data-bs-slide="prev">
-    <span  className=" text-secondary w-12 h-12 rounded-full flex justify-center items-center " aria-hidden=""><i class="fa-solid fa-angle-left text-4xl"></i></span>
+    <span  className=" text-secondary w-12 h-12 rounded-full flex justify-center items-center " aria-hidden=""><i className="fa-solid fa-angle-left text-4xl"></i></span>
     <span  className="sr-only">Previous</span>
   </button>
   <button  className="carousel-control-next" data-bs-target="#carouselExampleControls" role="button" data-bs-slide="next">
-    <span  className=" text-secondary w-12 h-12 rounded-full flex justify-center items-center" aria-hidden="true"><i class="fa-solid fa-angle-right text-4xl"></i></span>
+    <span  className=" text-secondary w-12 h-12 rounded-full flex justify-center items-center" aria-hidden="true"><i className="fa-solid fa-angle-right text-4xl"></i></span>
     <span  className="sr-only">Next</span>
   </button>
-</div>
+
+  </div>
+   
+}
+
+
+    {/* {myGadgetData.imgUrl  &&
+    
+    
+    
+  
+    
+
+
+} */}
+
+
+
 
 
 
@@ -102,7 +138,7 @@ const GadgetDetails = () => {
  <div className='px-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Original Price: </span> <span className='font-bold'>            ${myGadgetData.originalPrice}  
   </span>
   </div>
-  <div className=' ml-3 px-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}
+  <div className=' ml-3 px-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'>: ({productAge} months)</span>
   </span>
   </div>
  </div>
@@ -151,7 +187,7 @@ const GadgetDetails = () => {
 
   
 
-  <div className='px-4 py-4 mt-2 shadow-md shadow-blue-200  hover:bg-slate-400 hover:text-white'> Posted on:  <span className='font-bold'>            {myGadgetData.datePosted} 
+  <div className='px-4 py-4 mt-2 shadow-md shadow-blue-200  hover:bg-slate-400 hover:text-white'> Posted on:  <span className='font-bold'>            {myGadgetData.datePosted}  <span className='text-secondary'>({diffPosting} days ago ) </span>
   </span>
   </div>
 
