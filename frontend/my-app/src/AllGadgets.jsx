@@ -46,8 +46,16 @@ const AllGadgets = () => {
 
   let arraysPerPage = fetchedData.slice(startIndex, endIndex)
 
+  let noOfBtns = Math.floor(fetchedData.length/6)
+  console.log(noOfBtns)
+ 
+const arrayForMapping = (start, end) => Array.from({length: end - start}, (_ ,i ) => 0 + i )
 
-const paginationBtns = arraysPerPage.map((item, index) =>  {
+const btnsArray = arrayForMapping(0, (noOfBtns + 1))
+console.log(btnsArray)
+
+
+const paginationBtns = btnsArray.map((item, index) =>  {
   return (
     <div key={index} className="mx-2">
          <button  className="btn btn-primary w-10 h-10 bg-gradient" onClick={() => {setStartIndex(6 * index)}}> {index + 1} </button>
@@ -56,6 +64,15 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
   )
 }
 )
+
+
+
+
+
+  
+
+
+
 
 
 
@@ -343,6 +360,7 @@ const paginationBtns = arraysPerPage.map((item, index) =>  {
       <div className=" w-96 mx-auto mt-5">
       <div className="text-white flex">
         {paginationBtns}
+        
         </div>
       </div>
         </header>
