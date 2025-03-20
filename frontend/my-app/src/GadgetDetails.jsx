@@ -86,15 +86,15 @@ const GadgetDetails = () => {
 
 { !myGadgetData.imgUrl  || myGadgetData.imgUrl.length == 0 ?
   <div className='w-full flex justify-center'>
-  <img className="shadow-2xl" alt="Yoo"  style={{width:'50%', height: '400px'}} src='https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' /> 
+  <img className="shadow-2xl object-contain gadget-image" alt="Yoo"   src='https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' /> 
     </div>   :    <div id="carouselExampleControls"  className="carousel slide" data-ride="carousel">
   <div  className="carousel-inner">
     
     
    { myGadgetData.imgUrl.map((item, index) => {
       return (
-        <div key={index} className={`carousel-item ${item == myGadgetData.imgUrl[0] ? 'active' : ''}`}>
-        <img  className="d-block mx-auto" src={item} alt="Second slide"  style={{width:'50%', height: '400px', objectFit: 'cover'}} />
+        <div key={index} className={`carousel-item  ${item == myGadgetData.imgUrl[0] ? 'active' : ''}`}>
+        <img  className="d-block mx-auto gadget-image" src={item} alt="Second slide"  style={{objectFit: 'contain'}} />
       </div>
       )
     }) }
@@ -130,44 +130,46 @@ const GadgetDetails = () => {
 
 
 <div className='w-full mt-5'>
- <div className='flex justify-between'>
- <div className='px-4 py-4 mt-2 shadow-md bg-blue-100   hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>({markUpPercentage}%)</span>
+ <div className='row'>
+
+ <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-100   hover:bg-blue-50 '>
+   <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>({markUpPercentage}%)</span>
   </span>
   </div>
- <div className='flex '>
- <div className='px-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Original Price: </span> <span className='font-bold'>            ${myGadgetData.originalPrice}  
+ <div className=' md:flex col-sm-12 col-md-8 '>
+ <div className='px-4 text-center col-sm-12 col-md-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Original Price: </span> <span className='font-bold'>            ${myGadgetData.originalPrice}  
   </span>
   </div>
-  <div className=' ml-3 px-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-400 hover:text-white'> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'>: ({productAge} months)</span>
+  <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({productAge} months)</span>
   </span>
   </div>
  </div>
  </div>
 
 <div className='border-1 border-slate-100 mt-4 shadow-md shadow-blue-200'>
-<div className='flex justify-between'>
+<div className='md:flex md:justify-between '>
 
-<div className='px-4 py-4 mt-2   hover:bg-slate-400 hover:text-white'> Posted by:  <span className='font-bold'>            {myGadgetData.salerName}
+<div className='px-4 md:text-center py-4 mt-2  col-sm-12 col-md-4 hover:bg-slate-100 '> Posted by:  <span className='font-bold'>            {myGadgetData.salerName}
  </span>
  </div>
 
-<div className='flex '>
+<div className='md:flex col-sm-12 col-md-8'>
 
-<div className='px-4 py-4 mt-2   hover:bg-slate-400 hover:text-white'> Phone:  <span className='font-bold'>            {myGadgetData.sellerPhone}
+<div className='px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Phone:  <span className='font-bold'>            {myGadgetData.sellerPhone}
  </span>
  </div>
 
 
- <div className='ml-3 px-4 py-4 mt-2   hover:bg-slate-400 hover:text-white'> Email:  <span className='font-bold'>            {myGadgetData.sellerEmail}
+ <div className=' px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Email:  <span className='font-bold'>            {myGadgetData.sellerEmail}
  </span>
  </div>
 </div>
 </div>
- <div className='px-4 pt-4 mt-2  '> Salient Features:  <span className='font-bold'> 
+ <div className='px-4 pt-4 mt-2 col-sm-12 col-md-12 '> Salient Features:  <span className='font-bold'> 
   <ul className='mt-3'>
     {featuresArray && featuresArray.map((item, index )=> {
       return (
-        <li key={index} className='list-disc w-full mt-1 py-3 pl-4 hover:bg-blue-400 hover:text-white'> {item} </li>
+        <li key={index} className='list-disc w-full mt-1 py-3 pl-4 hover:bg-blue-50 '> {item} </li>
       )
     })}
     </ul>          
@@ -176,7 +178,7 @@ const GadgetDetails = () => {
 
  </div>
 
- <div className=' mt-4 px-4 py-4  hover:bg-slate-400 hover:text-white'> Current Condition:  <span className='font-bold'>            {myGadgetData.currentCondition} Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+ <div className=' mt-4 px-4 py-4 col-sm-12 col-md-12 hover:bg-slate-50 '> Current Condition:  <span className='font-bold'>            {myGadgetData.currentCondition} Lorem ipsum dolor sit amet consectetur adipisicing elit. 
  </span>
  </div>
 
@@ -187,7 +189,13 @@ const GadgetDetails = () => {
 
   
 
-  <div className='px-4 py-4 mt-2 shadow-md shadow-blue-200  hover:bg-slate-400 hover:text-white'> Posted on:  <span className='font-bold'>            {myGadgetData.datePosted}  <span className='text-secondary'>({diffPosting} days ago ) </span>
+  <div className='px-4 py-4 mt-2 col-sm-12 col-md-12 shadow-md shadow-blue-200  hover:bg-slate-100 '> Posted on:  <span className='font-bold'>            {myGadgetData.datePosted}  <span className='text-secondary'>({diffPosting} days ago ) </span>
+  </span>
+  </div>
+
+  <div className='px-4 py-4 mt-2 col-sm-12 col-md-12 shadow-md shadow-blue-200  hover:bg-slate-100 '> Category: <span className='font-bold'>            {myGadgetData.gadgetName}
+       {myGadgetData.gadgetName && myGadgetData.gadgetName[myGadgetData.gadgetName.length - 1] == 's' ?  '' : 's'} 
+
   </span>
   </div>
 

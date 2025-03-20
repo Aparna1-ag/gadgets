@@ -237,7 +237,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
           />
           {/* <img src={img1} className='myforeground'  /> */}
          <div className="flex justify-center items-center" style={{height: "100vh"}}>
-         <h1 className="text-white">
+         <h1 className="text-white text-center">
             Welcome to the Ultimate Gadget Resale spot!
           </h1>
          </div>
@@ -278,11 +278,18 @@ const paginationBtns = btnsArray.map((item, index) =>  {
               className="w-40 h-40"
             /> */}
 
-            <div className="row mx-auto" style={{ width: "90%" }}>
+            <div className="row mx-auto cards-container" >
               {arraysPerPage.map((item, index) => {
                 return (
-                  <div className="col-md-6 mb-4 " key={index}>
-                    <div className="gadget-cards  ">
+                  <div className="col-sm-12 col-md-9 col-lg-6 mb-4 mx-auto " key={index}>
+
+
+                    <div className="gadget-cards animate-fade-down animate-duration-1000 animate-delay-[3000ms]  ">
+                    <Link
+                          to={`/gadgetdetails/${item._id}`} className="">
+                            <div className="w-full flex justify-center"><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='block md:hidden w-52 h-52 mb-5' style={{objectFit: "contain"}}/></div>
+
+</Link> 
                       <div className="flex justify-between">
                         <div>
                           <div className="text-xl exo-text">
@@ -295,21 +302,21 @@ const paginationBtns = btnsArray.map((item, index) =>  {
                             Resale Price: 
                             <span className="font-bold">
                                
-                              {item.resalePrice}$
+                               {item.resalePrice}$
                             </span>
                           </div>
 
-                          <div> Seller: {item.salerName}</div>
+                          <div> Seller:  {item.salerName}</div>
                           <div className="mt-5">
                              
-                            Purchased on: {item.originalPurchaseDate}
+                            Purchased on:  {item.originalPurchaseDate}
                           </div>
 
                           <div>
                             Posted on: 
                             <span className="font-bold">
                                
-                              {item.datePosted}
+                               {item.datePosted}
                             </span>
                           </div>
                         </div>
@@ -317,7 +324,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
                        
 
                         <Link
-                          to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='w-40 h-40' />
+                          to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='hidden md:block w-40 h-40' style={{objectFit: "contain"}}/>
 
 </Link> 
                 
@@ -325,7 +332,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
                      
                       </div>
 
-                      <div className="flex justify-between w-3/4 mx-auto mt-5">
+                      <div className="flex justify-between w-full md:w-4/5 lg:w-3/4 mx-auto mt-5">
                         <button
                           className=" custom-btn btn-green mr-4"
                           data-bs-toggle="modal"
@@ -438,8 +445,8 @@ const paginationBtns = btnsArray.map((item, index) =>  {
                 aria-label="Close"
               ></button>
             </div>
-            <form className="" onSubmit={handleSubmit}>
-              <div className="modal-body">
+            <form className="bg-gradient-to-br from-blue-300 to-slate-300" onSubmit={handleSubmit}>
+              <div className="modal-body w-75 mx-auto ">
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Gadget Name:

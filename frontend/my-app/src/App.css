@@ -136,3 +136,46 @@ header {
 
   }
 
+
+  @media (max-width: 760px) {
+    .cards-container {
+      width: 98%
+    }
+  }
+
+  @media (min-width: 768px) {
+    .cards-container {
+      width: 90%
+    }
+  }
+
+  @media (max-width: 760px) {
+    .gadget-image {
+      width: 90%;
+      height: 200px;
+      margin-top: 2rem;
+    }
+  }
+
+  @media (min-width: 761px) {
+    .gadget-image {
+      margin-top: 2.5rem;
+      width: 70%;
+      height: 400px;
+      
+    }
+  }
+
+  @media (min-width: 998px) {
+    .gadget-image {
+      margin-top: 2.5rem;
+      width: 50%;
+      height: 400px;
+      
+    }
+  }
+  
+  
+
+ 
+
