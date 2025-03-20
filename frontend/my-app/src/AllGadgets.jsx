@@ -37,7 +37,7 @@ const AllGadgets = () => {
   let clickedSI = 0
 let si = sessionStorage.getItem('startIndex')
 if (si) {
-  clickedSI = parseInt(si) * 6
+  clickedSI = parseInt(si) * 10
 }
 
   let [startIndex, setStartIndex] = useState(clickedSI)
@@ -46,7 +46,7 @@ if (si) {
 
 
 
-  let endIndex = startIndex + 6
+  let endIndex = startIndex + 10
 
   if (endIndex === fetchedData.length) {
     endIndex = fetchedData.length - 1
@@ -56,7 +56,7 @@ if (si) {
 
   let arraysPerPage = fetchedData.slice(startIndex, endIndex)
 
-  let noOfBtns = Math.floor((fetchedData.length/6) + 1)
+  let noOfBtns = Math.floor((fetchedData.length/10) + 1)
   // console.log(noOfBtns)
  
 const arrayForMapping = (start, end) => Array.from({length: end - start}, (_ ,i ) => 0 + i )
@@ -66,7 +66,7 @@ const [pageNo, setPageNo] = useState(1)
 // console.log(btnsArray)
 
 const handlePgnBtnClick = (clickedInd) => {
-  setStartIndex(6 * clickedInd)
+  setStartIndex(10 * clickedInd)
   // setPageNo(clickedInd + 1)
   sessionStorage.setItem('startIndex', JSON.stringify(clickedInd))
   
@@ -242,6 +242,8 @@ const paginationBtns = btnsArray.map((item, index) =>  {
 <img src="https://i.pinimg.com/originals/3e/f0/e6/3ef0e69f3c889c1307330c36a501eb12.gif" className="w-28 h-28 mx-auto" />  <h3 className="text-center mt-5">Posting Your Gadget </h3>
 </div>
  </div>
+
+ <div className="wrappers-wrapper">
      
       <div className="wrapper">
 
@@ -384,8 +386,8 @@ const paginationBtns = btnsArray.map((item, index) =>  {
           </div>
         </div>
 
-      <div className=" w-96 mx-auto mt-5">
-      <div className="text-white flex">
+      <div className=" w-full flex justify-center mt-5 pb-5">
+      <div className="text-white flex mx-auto">
         {paginationBtns}
         
         </div>
@@ -393,6 +395,8 @@ const paginationBtns = btnsArray.map((item, index) =>  {
         </header>
 
        
+      </div>
+
       </div>
 
       <div
