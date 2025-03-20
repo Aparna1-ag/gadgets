@@ -34,7 +34,17 @@ const AllGadgets = () => {
     currentCondition: "",
   });
 
-  const [startIndex, setStartIndex] = useState(0)
+  let clickedSI = 0
+let si = sessionStorage.getItem('startIndex')
+if (si) {
+  clickedSI = parseInt(si) * 6
+}
+
+  let [startIndex, setStartIndex] = useState(clickedSI)
+
+
+
+
 
   let endIndex = startIndex + 6
 
@@ -47,18 +57,27 @@ const AllGadgets = () => {
   let arraysPerPage = fetchedData.slice(startIndex, endIndex)
 
   let noOfBtns = Math.floor((fetchedData.length/6) + 1)
-  console.log(noOfBtns)
+  // console.log(noOfBtns)
  
 const arrayForMapping = (start, end) => Array.from({length: end - start}, (_ ,i ) => 0 + i )
 
 const btnsArray = arrayForMapping(0, noOfBtns)
-console.log(btnsArray)
+const [pageNo, setPageNo] = useState(1)
+// console.log(btnsArray)
+
+const handlePgnBtnClick = (clickedInd) => {
+  setStartIndex(6 * clickedInd)
+  // setPageNo(clickedInd + 1)
+  sessionStorage.setItem('startIndex', JSON.stringify(clickedInd))
+  
+  console.log(clickedInd)
+}
 
 
 const paginationBtns = btnsArray.map((item, index) =>  {
   return (
     <div key={index} className="mx-2">
-         <button  className="btn btn-primary w-10 h-10 bg-gradient" onClick={() => {setStartIndex(6 * index)}}> {index + 1} </button>
+         <button  className="btn btn-primary w-10 h-10 bg-gradient" onClick={() => {handlePgnBtnClick(index)}}> {index + 1} </button>
 
     </div>
   )
@@ -279,6 +298,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
             /> */}
 
             <div className="row mx-auto cards-container" >
+              {/* <p className="text-white">Page: {pageNo}</p> */}
               {arraysPerPage.map((item, index) => {
                 return (
                   <div className="col-sm-12 col-md-9 col-lg-6 mb-4 mx-auto " key={index}>
