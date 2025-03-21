@@ -140,121 +140,129 @@ const paginationBtns = btnsArray.map((item, index) =>  {
          
 {
     fetchedData.length == 0 && 
-    <div className="text-3xl text-white text-center w-full">  Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.</div>
+    <div className="text-3xl text-white text-center w-full">
+        Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.
+        <div className="flex justify-center mt-6" onClick={() => {window.location.reload()}}> 
+           {/* <img src="https://png.pngtree.com/element_our/20190601/ourmid/pngtree-white-refresh-icon-image_1338657.jpg" className="w-20 h-20" />  */}
+           <i className="fa-solid fa-rotate-right text-white text-5xl"   ></i>
+           </div>
+        </div>
    }
 
 
-          <div className="relative ">
-          {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
-          <div className='absolute top-0 left-0 w-full custom-bg-image'>
+       {
+        fetchedData.length == 0 ? '' :    <div className="relative ">
+        {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
+        <div className='absolute top-0 left-0 w-full custom-bg-image'>
 
-          </div>
+        </div>
 
-          <div className="">
-            {/* <div className="mx-32 text-white"><h2>{successMessage}</h2></div> */}
+        <div className="">
+          {/* <div className="mx-32 text-white"><h2>{successMessage}</h2></div> */}
 
-            <Link  to = "/postnewgadget" className="flex justify-center w-full py-5 text-decoration-none">
-               
-              <div
-                className="btn btn-primary btn-lg bg-gradient"
-               
-              >
+          <Link  to = "/postnewgadget" className="flex justify-center w-full py-5 text-decoration-none">
+             
+            <div
+              className="btn btn-primary btn-lg bg-gradient"
+             
+            >
 
 <i className="fa-solid fa-plus mr-1"></i>
-                 
-                Post Your Gadget
-              </div>
-            </Link>
+               
+              Post Your Gadget
+            </div>
+          </Link>
 
 
-            <div className="row mx-auto cards-container" >
-              {/* <p className="text-white">Page: {pageNo}</p> */}
-                <div className="w-full flex justify-end"><p className="text-white">Page: { (Math.floor(startIndex/10)) + 1 }</p></div>
+          <div className="row mx-auto cards-container" >
+            {/* <p className="text-white">Page: {pageNo}</p> */}
+              <div className="w-full flex justify-end"><p className="text-white">Page: { (Math.floor(startIndex/10)) + 1 }</p></div>
 
-              {arraysPerPage.map((item, index) => {
-                return (
-                  <div className="col-sm-12 col-md-9 col-lg-6 mb-4 mx-auto " key={index}>
+            {arraysPerPage.map((item, index) => {
+              return (
+                <div className="col-sm-12 col-md-9 col-lg-6 mb-4 mx-auto " key={index}>
 
 
-                    <div className="gadget-cards animate-fade-down animate-duration-1000 animate-delay-[3000ms]  ">
-                    <Link
-                          to={`/gadgetdetails/${item._id}`} className="">
-                            <div className="w-full flex justify-center"><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='block md:hidden w-52 h-52 mb-5' style={{objectFit: "contain"}}/></div>
+                  <div className="gadget-cards animate-fade-down animate-duration-1000 animate-delay-[3000ms]  ">
+                  <Link
+                        to={`/gadgetdetails/${item._id}`} className="">
+                          <div className="w-full flex justify-center"><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='block md:hidden w-52 h-52 mb-5' style={{objectFit: "contain"}}/></div>
 
 </Link> 
-                      <div className="flex justify-between">
-                        <div>
-                          <div className="text-xl exo-text">
-                            <span> {item.brand} </span>
-                            <span> {item.model} </span>
-                          </div>
-
-                          <div className="mt-3">
-                             
-                            Resale Price: {" "}  
-                              <span className="font-bold">
-                               
-                               {item.resalePrice}$
-                            </span>
-                          </div>
-
-                          <div> Seller:  {item.salerName}</div>
-                          <div className="mt-5">
-                             
-                            Purchased on:  {item.originalPurchaseDate}
-                          </div>
-
-                          <div>
-                            Posted on: {" "}  
-                              <span className="font-bold">
-                               
-                               {item.datePosted}
-                            </span>
-                          </div>
+                    <div className="flex justify-between">
+                      <div>
+                        <div className="text-xl exo-text">
+                          <span> {item.brand} </span>
+                          <span> {item.model} </span>
                         </div>
 
-                       
+                        <div className="mt-3">
+                           
+                          Resale Price: {" "}  
+                            <span className="font-bold">
+                             
+                             {item.resalePrice}$
+                          </span>
+                        </div>
 
-                        <Link
-                          to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='hidden md:block w-40 h-40' style={{objectFit: "contain"}}/>
+                        <div> Seller:  {item.salerName}</div>
+                        <div className="mt-5">
+                           
+                          Purchased on:  {item.originalPurchaseDate}
+                        </div>
 
-</Link> 
-                
+                        <div>
+                          Posted on: {" "}  
+                            <span className="font-bold">
+                             
+                             {item.datePosted}
+                          </span>
+                        </div>
+                      </div>
 
                      
-                      </div>
 
-                      <div className="flex justify-between w-full md:w-4/5 lg:w-3/4 mx-auto mt-5">
-                        <button
-                          className=" custom-btn btn-green mr-4"
-                          data-bs-toggle="modal"
-                          data-bs-target="#contact-info-modal"
-                          data-bs-email={item.sellerEmail}
-                          data-bs-phone={item.sellerPhone}
-                        >
+                      <Link
+                        to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='hidden md:block w-40 h-40' style={{objectFit: "contain"}}/>
+
+</Link> 
+              
+
+                   
+                    </div>
+
+                    <div className="flex justify-between w-full md:w-4/5 lg:w-3/4 mx-auto mt-5">
+                      <button
+                        className=" custom-btn btn-green mr-4"
+                        data-bs-toggle="modal"
+                        data-bs-target="#contact-info-modal"
+                        data-bs-email={item.sellerEmail}
+                        data-bs-phone={item.sellerPhone}
+                      >
+                         
+                        <i className="fa-solid fa-address-card mr-1"></i> 
+                        Contact Seller
+                      </button>
+
+                      <Link
+                        to={`/gadgetdetails/${item._id}`}
+                        className="no-underline text-decoration-none"
+                      >
+                        <div className="custom-btn btn-pink ">
                            
-                          <i className="fa-solid fa-address-card mr-1"></i> 
-                          Contact Seller
-                        </button>
-
-                        <Link
-                          to={`/gadgetdetails/${item._id}`}
-                          className="no-underline text-decoration-none"
-                        >
-                          <div className="custom-btn btn-pink ">
-                             
-                            <i className="fa-solid fa-forward mr-1"></i> More
-                            Details
-                          </div>
-                        </Link>
-                      </div>
+                          <i className="fa-solid fa-forward mr-1"></i> More
+                          Details
+                        </div>
+                      </Link>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
+      </div>
+       }
 
       <div className=" w-full flex justify-center mt-5 pb-5">
       <div className="text-white flex mx-auto">

@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
+import { configDotenv } from "dotenv";
 
 
-const mongoURI = "mongodb+srv://StereoDevv:MongoExpress%401@gadgets.ivgae.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=gadgets"
+configDotenv()
+
+const mongoURI = process.env.MONGO_URI
 
 export const connecttoDB = async () => {
   try {
