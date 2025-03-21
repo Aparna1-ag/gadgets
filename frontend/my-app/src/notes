@@ -1,4 +1,4 @@
-
+<!-- 
 fields: 
 
 contact details: email, phone,
@@ -20,4 +20,11 @@ LoginPage (optional)
 inward shadow in the cards ✅
 Calculate Date & calculate percent ✅
 change Date formats ✅
-Fade/any animation for the cards 
+Fade/any animation for the cards  -->
+
+
+
+
+
+Add success and error page and add restriction to form fields
+dummy data and host

@@ -5,7 +5,7 @@ import img2 from "./assets/custom_bg.png";
 import { Link } from "react-router";
 import Navbar from "./Navbar";
 
-const AllGadgets = () => {
+const AddNewGadget = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -273,151 +273,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
 </div>
  </div>
 
- <div className="wrappers-wrapper">
-     
-      <div className="wrapper">
 
-     
-
-   
-        <header>
-       
-          <img
-            src="https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp"
-            className="mybackground"
-          />
-          {/* <img src={img1} className='myforeground'  /> */}
-         <div className="flex justify-center items-center" style={{height: "100vh"}}>
-         <h1 className="text-white text-center">
-            Welcome to the Ultimate Gadget Resale spot!
-          </h1>
-         </div>
-
-          <div className="relative ">
-          {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
-          <div className='absolute top-0 left-0 w-full custom-bg-image'>
-
-          </div>
-
-          <div className="">
-            {/* <div className="mx-32 text-white"><h2>{successMessage}</h2></div> */}
-
-            <div className="flex justify-center w-full py-5">
-               
-              <button
-                className="btn btn-primary btn-lg bg-gradient"
-                data-bs-toggle="modal"
-                data-bs-target="#post-new-gadget-modal"
-              >
-
-<i className="fa-solid fa-plus mr-1"></i>
-                 
-                Post Your Gadget
-              </button>
-            </div>
-
-
-            <div className="row mx-auto cards-container" >
-              {/* <p className="text-white">Page: {pageNo}</p> */}
-                <p className="text-white">Page: { (Math.floor(startIndex/10)) + 1 }</p>
-
-              {arraysPerPage.map((item, index) => {
-                return (
-                  <div className="col-sm-12 col-md-9 col-lg-6 mb-4 mx-auto " key={index}>
-
-
-                    <div className="gadget-cards animate-fade-down animate-duration-1000 animate-delay-[3000ms]  ">
-                    <Link
-                          to={`/gadgetdetails/${item._id}`} className="">
-                            <div className="w-full flex justify-center"><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='block md:hidden w-52 h-52 mb-5' style={{objectFit: "contain"}}/></div>
-
-</Link> 
-                      <div className="flex justify-between">
-                        <div>
-                          <div className="text-xl exo-text">
-                            <span> {item.brand} </span>
-                            <span> {item.model} </span>
-                          </div>
-
-                          <div className="mt-3">
-                             
-                            Resale Price: {" "}  
-                              <span className="font-bold">
-                               
-                               {item.resalePrice}$
-                            </span>
-                          </div>
-
-                          <div> Seller:  {item.salerName}</div>
-                          <div className="mt-5">
-                             
-                            Purchased on:  {item.originalPurchaseDate}
-                          </div>
-
-                          <div>
-                            Posted on: {" "}  
-                              <span className="font-bold">
-                               
-                               {item.datePosted}
-                            </span>
-                          </div>
-                        </div>
-
-                       
-
-                        <Link
-                          to={`/gadgetdetails/${item._id}`}><img src={item.imgUrl.length ? item.imgUrl[0] : 'https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg' } className='hidden md:block w-40 h-40' style={{objectFit: "contain"}}/>
-
-</Link> 
-                
-
-                     
-                      </div>
-
-                      <div className="flex justify-between w-full md:w-4/5 lg:w-3/4 mx-auto mt-5">
-                        <button
-                          className=" custom-btn btn-green mr-4"
-                          data-bs-toggle="modal"
-                          data-bs-target="#contact-info-modal"
-                          data-bs-email={item.sellerEmail}
-                          data-bs-phone={item.sellerPhone}
-                        >
-                           
-                          <i className="fa-solid fa-address-card mr-1"></i> 
-                          Contact Seller
-                        </button>
-
-                        <Link
-                          to={`/gadgetdetails/${item._id}`}
-                          className="no-underline text-decoration-none"
-                        >
-                          <div className="custom-btn btn-pink ">
-                             
-                            <i className="fa-solid fa-forward mr-1"></i> More
-                            Details
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-      <div className=" w-full flex justify-center mt-5 pb-5">
-      <div className="text-white flex mx-auto">
-        {paginationBtns}
-        
-        </div>
-      </div>
-        </header>
-
-       
-      </div>
-
-      </div>
 
       <div
         className="modal fade"
@@ -746,4 +602,4 @@ const paginationBtns = btnsArray.map((item, index) =>  {
   );
 };
 
-export default AllGadgets;
+export default AddNewGadget;
