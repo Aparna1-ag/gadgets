@@ -8,6 +8,7 @@ import AllGadgets from './AllGadgets';
 import Home from './Home';
 import GadgetDetails from './GadgetDetails';
 import Demo from './demoCloud';
+import AddNewGadget from './AddNewGadget';
 
 
 
@@ -28,6 +29,7 @@ function App() {
     
     <Route path='/gadgetdetails/:id' element={<GadgetDetails />} />
     <Route path='/demo'  element={<Demo/>} />
+    <Route path='/postnewgadget' element={<AddNewGadget />} />
   </Routes>
 
 

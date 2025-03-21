@@ -32,6 +32,14 @@ header {
 }
 
 
+.success-screen {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px) ;
+  -webkit-backdrop-filter: blur(3px) ;
+}
+
+
+
 
 .mybackground {
     width: 100%;
