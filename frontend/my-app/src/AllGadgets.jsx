@@ -132,7 +132,17 @@ const paginationBtns = btnsArray.map((item, index) =>  {
          <h1 className="text-white text-center">
             Welcome to the Ultimate Gadget Resale spot!
           </h1>
+
+
+
          </div>
+
+         
+{
+    fetchedData.length == 0 && 
+    <div className="text-3xl text-white text-center w-full">  Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.</div>
+   }
+
 
           <div className="relative ">
           {/* <img src='https://techcircuitworld.com/wp-content/uploads/2024/08/istockphoto-1497558248-612x612-2.webp' className='absolute top-0 left-0 w-full custom-bg-image' /> */}
