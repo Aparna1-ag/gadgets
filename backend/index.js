@@ -47,7 +47,7 @@ app.post("/createuser", async (req, res) => {
         console.log("new user created" + newUser)
     } catch (err)  {
         console.log("Error inserting user:", err);  
-        res.status(500).send("Error creating user");
+        res.status(500).json({message: "Error creating new user"});
     }
 
    
@@ -65,7 +65,7 @@ app.post('/allgadgets', async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(500).send("Error creating gadget")
+        res.status(500).json({message: "Error creating new gadget"})
     }
 })
 
@@ -75,8 +75,27 @@ app.get('/allgadgets', async (req, res) => {
     const myDbData = await Gadget.find()
     res.json(myDbData)
    } catch (err) {
-    res.status(500).json({message : "Error fetching collection"})
+    res.status(500).json({message : "Error fetching gadgets"})
    }
+})
+
+
+app.delete('/allgadgets/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+    const itemDeleted = await Gadget.findByIdAndDelete(id)
+
+    if (!itemDeleted) {
+        return res.status(404).json({message: "Item not found"})
+    }
+   
+    res.json({message: "item deleted"}) 
+
+   
+
+    } catch (err) {
+       res.status(500).json({message: "error deleting gadget"})
+    }
 })
 
 

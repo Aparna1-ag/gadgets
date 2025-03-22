@@ -10,6 +10,8 @@ const AllGadgets = () => {
   const [phone, setPhone] = useState("");
 
   const [fetchedData, setFetchedData] = useState([]);
+      const [errorMessage, setErrorMessage] = useState("")
+  
 
 
 
@@ -141,6 +143,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
 {
     fetchedData.length == 0 && 
     <div className="text-3xl text-white text-center w-full">
+      <p className="text-center">{errorMessage}</p>
         Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.
         <div className="flex justify-center mt-6" onClick={() => {window.location.reload()}}> 
            {/* <img src="https://png.pngtree.com/element_our/20190601/ourmid/pngtree-white-refresh-icon-image_1338657.jpg" className="w-20 h-20" />  */}

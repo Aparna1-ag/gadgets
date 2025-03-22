@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 import React, {useState} from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router'
 import Navbar from './Navbar'
 
 const GadgetDetails = () => {
+
+
+  const navigate = useNavigate()
 
 
 
@@ -61,6 +64,39 @@ const GadgetDetails = () => {
     const diffPosting = (Math.floor(diffPost/(1000 * 60 * 60 * 24)))
 
     const productAge = Math.floor(diffAge/(1000 * 60 * 60 * 24 * 30))
+
+    const idForDeletion = myGadgetData._id
+
+
+    const handleDelete = async () => {
+      try {
+        let deleteUrl = `http://localhost:3300/allgadgets/${idForDeletion}`
+        const response = await fetch(deleteUrl, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        if (!response.ok) {
+          throw new Error("Error Deleteing gadget")
+        } 
+
+        // const result = response.json()
+
+        console.log(response.message + "Item deleted")
+
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+        
+      }
+     
+     catch (err) {
+      console.log(err)
+
+    }
+  }
 
 
 
@@ -130,6 +166,13 @@ const GadgetDetails = () => {
 
 
 <div className='w-full mt-5'>
+
+<div className='flex justify-end'> 
+  {/* <button className='btn-primary btn bg-gradient'> Update</button> */}
+  <button className='btn-danger btn bg-gradient' onClick={handleDelete}> Delete</button>
+
+
+</div>
  <div className='row'>
 
  <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-100   hover:bg-blue-50 '>
