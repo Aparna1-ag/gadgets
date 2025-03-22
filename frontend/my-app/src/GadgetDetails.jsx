@@ -65,6 +65,9 @@ const GadgetDetails = () => {
 
     const productAge = Math.floor(diffAge/(1000 * 60 * 60 * 24 * 30))
 
+    const prodAgeYrs = Math.floor(productAge/12)
+    const prodAgeMonths = productAge%12
+
     const itemId = myGadgetData._id
 
 
@@ -214,7 +217,7 @@ const GadgetDetails = () => {
    <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>({markUpPercentage}%)</span>
   </span>
 <span  data-bs-toggle="modal"
-                        data-bs-target="#update-resale-price">  <i className="fa-solid fa-pencil text-primary ml-5"></i> 
+                        data-bs-target="#update-resale-price"  >  <i title='Update Resale Price' className="fa-solid fa-pencil text-primary ml-5"></i> 
 </span> 
  </div>
  <div className=' md:flex col-sm-12 col-md-8 '>
@@ -222,7 +225,7 @@ const GadgetDetails = () => {
   </span>
 
   </div>
-  <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({productAge} months)</span>
+  <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({prodAgeYrs <= 0 ? '' : prodAgeYrs} {prodAgeYrs ? 'Yr' : ''} {prodAgeMonths} Mos )</span>
   </span>
 
   </div>
@@ -242,7 +245,7 @@ const GadgetDetails = () => {
 <div className='px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Phone:  <span className='font-bold'>            {myGadgetData.sellerPhone}
  </span>
  <span   data-bs-toggle="modal"
-                        data-bs-target="#update-phone">  <i className="fa-solid fa-pencil text-primary ml-5"></i>
+                        data-bs-target="#update-phone">  <i title='Update Saler Phone' className="fa-solid fa-pencil text-primary ml-5"></i>
  </span> 
  </div>
 
@@ -250,7 +253,7 @@ const GadgetDetails = () => {
  <div className=' px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Email:  <span className='font-bold'>            {myGadgetData.sellerEmail}
  </span>
  <span data-bs-toggle="modal"
-                        data-bs-target="#update-email">  <i className="fa-solid fa-pencil text-primary ml-5"></i>
+                        data-bs-target="#update-email">  <i title='Update Saler Email' className="fa-solid fa-pencil text-primary ml-5"></i>
  </span> 
  </div>
 </div>
@@ -259,7 +262,7 @@ const GadgetDetails = () => {
   <div className='flex justify-between'>
    <div> Salient Features:</div> 
    <div data-bs-toggle="modal"
-                        data-bs-target="#update-salient-features">  <i className="fa-solid fa-pencil text-primary "></i> </div>
+                        data-bs-target="#update-salient-features">  <i title='Update Salient Features' className="fa-solid fa-pencil text-primary "></i> </div>
    
 
      </div>
@@ -280,7 +283,7 @@ const GadgetDetails = () => {
  <div className='flex justify-between'>
    <div> Current Condition:</div> 
    <div data-bs-toggle="modal"
-                        data-bs-target="#update-current-condition">  <i className="fa-solid fa-pencil text-primary "></i> </div>
+                        data-bs-target="#update-current-condition">  <i title='Update Current Condition'  className="fa-solid fa-pencil text-primary "></i> </div>
 
      </div>
    <span className='font-bold'>          {myGadgetData.currentCondition} 
