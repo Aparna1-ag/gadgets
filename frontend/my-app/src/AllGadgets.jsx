@@ -76,7 +76,7 @@ const paginationBtns = btnsArray.map((item, index) =>  {
   useEffect(() => {
     const fetchgadgetData = async () => {
       try {
-        const fetchResponse = await fetch("http://localhost:3300/allgadgets");
+        const fetchResponse = await fetch("https://ultimategadgeting.onrender.com/allgadgets");
         const gadgetData = await fetchResponse.json();
         if (fetchResponse.ok) {
           setFetchedData(gadgetData.reverse());

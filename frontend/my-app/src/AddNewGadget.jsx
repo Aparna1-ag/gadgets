@@ -113,7 +113,7 @@ const AddNewGadget = () => {
         console.log(uploadedImgs)
 
 
-        let myUrl = "http://localhost:3300/allgadgets";
+        let myUrl = "https://ultimategadgeting.onrender.com/allgadgets";
         try {
             const result = await fetch(myUrl, {
                 method: "POST",

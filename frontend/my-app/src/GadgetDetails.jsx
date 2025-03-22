@@ -24,7 +24,7 @@ const GadgetDetails = () => {
     useEffect(() => {
       const fetchgadgetData = async () => {
         try {
-          const fetchResponse = await fetch("http://localhost:3300/allgadgets")
+          const fetchResponse = await fetch("https://ultimategadgeting.onrender.com/allgadgets")
          const gadgetData = await fetchResponse.json()
         if (fetchResponse.ok) {
             const reqdGadget = gadgetData.find(item => item._id == gadgetId.id)
@@ -73,7 +73,7 @@ const GadgetDetails = () => {
 
     const handleDelete = async () => {
       try {
-        let deleteUrl = `http://localhost:3300/allgadgets/${itemId}`
+        let deleteUrl = `https://ultimategadgeting.onrender.com/allgadgets/${itemId}`
         const response = await fetch(deleteUrl, {
           method: 'DELETE',
           headers: {
@@ -112,7 +112,7 @@ const GadgetDetails = () => {
   const updateDetails = async (e) => {
     e.preventDefault()
     try {
-      const updateUrl = `http://localhost:3300/allgadgets/${itemId}`
+      const updateUrl = `https://ultimategadgeting.onrender.com/allgadgets/${itemId}`
       const updateResponse = await fetch(updateUrl, {
         method: 'PATCH',
         headers: {
