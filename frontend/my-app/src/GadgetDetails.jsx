@@ -65,12 +65,12 @@ const GadgetDetails = () => {
 
     const productAge = Math.floor(diffAge/(1000 * 60 * 60 * 24 * 30))
 
-    const idForDeletion = myGadgetData._id
+    const itemId = myGadgetData._id
 
 
     const handleDelete = async () => {
       try {
-        let deleteUrl = `http://localhost:3300/allgadgets/${idForDeletion}`
+        let deleteUrl = `http://localhost:3300/allgadgets/${itemId}`
         const response = await fetch(deleteUrl, {
           method: 'DELETE',
           headers: {
@@ -95,6 +95,46 @@ const GadgetDetails = () => {
      catch (err) {
       console.log(err)
 
+    }
+  }
+
+  const [updateInfo, setUpdateInfo] = useState({})
+
+
+  const handleInfoUpdate = (e) => {
+    setUpdateInfo({[e.target.name]: e.target.value})
+
+  }
+
+  const updateDetails = async (e) => {
+    e.preventDefault()
+    try {
+      const updateUrl = `http://localhost:3300/allgadgets/${itemId}`
+      const updateResponse = await fetch(updateUrl, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+
+        body: JSON.stringify(updateInfo)
+      })
+
+      console.log(updateResponse)
+      console.log(updateInfo)
+
+      const result = await updateResponse.json()
+      
+      if (!updateResponse.ok) {
+        throw new Error("Error Updating Detail")
+      }
+      console.log(result)
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
+
+    } catch (err) {
+      console.log(err)
+     
     }
   }
 
@@ -167,24 +207,24 @@ const GadgetDetails = () => {
 
 <div className='w-full mt-5'>
 
-<div className='flex justify-end'> 
-  {/* <button className='btn-primary btn bg-gradient'> Update</button> */}
-  <button className='btn-danger btn bg-gradient' onClick={handleDelete}> Delete</button>
 
-
-</div>
  <div className='row'>
 
  <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-100   hover:bg-blue-50 '>
    <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>({markUpPercentage}%)</span>
   </span>
-  </div>
+<span  data-bs-toggle="modal"
+                        data-bs-target="#update-resale-price">  <i className="fa-solid fa-pencil text-primary ml-5"></i> 
+</span> 
+ </div>
  <div className=' md:flex col-sm-12 col-md-8 '>
  <div className='px-4 text-center col-sm-12 col-md-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Original Price: </span> <span className='font-bold'>            ${myGadgetData.originalPrice}  
   </span>
+
   </div>
   <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({productAge} months)</span>
   </span>
+
   </div>
  </div>
  </div>
@@ -194,21 +234,36 @@ const GadgetDetails = () => {
 
 <div className='px-4 md:text-center py-4 mt-2  col-sm-12 col-md-4 hover:bg-slate-100 '> Posted by:  <span className='font-bold'>            {myGadgetData.salerName}
  </span>
+
  </div>
 
 <div className='md:flex col-sm-12 col-md-8'>
 
 <div className='px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Phone:  <span className='font-bold'>            {myGadgetData.sellerPhone}
  </span>
+ <span   data-bs-toggle="modal"
+                        data-bs-target="#update-phone">  <i className="fa-solid fa-pencil text-primary ml-5"></i>
+ </span> 
  </div>
 
 
  <div className=' px-4 py-4 mt-2 md:text-center col-sm-12 col-md-6  hover:bg-slate-100 '> Email:  <span className='font-bold'>            {myGadgetData.sellerEmail}
  </span>
+ <span data-bs-toggle="modal"
+                        data-bs-target="#update-email">  <i className="fa-solid fa-pencil text-primary ml-5"></i>
+ </span> 
  </div>
 </div>
 </div>
- <div className='px-4 pt-4 mt-2 col-sm-12 col-md-12 '> Salient Features:  <span className='font-bold'> 
+ <div className='px-4 pt-4 mt-2 col-sm-12 col-md-12 '> 
+  <div className='flex justify-between'>
+   <div> Salient Features:</div> 
+   <div data-bs-toggle="modal"
+                        data-bs-target="#update-salient-features">  <i className="fa-solid fa-pencil text-primary "></i> </div>
+   
+
+     </div>
+   <span className='font-bold'> 
   <ul className='mt-3'>
     {featuresArray && featuresArray.map((item, index )=> {
       return (
@@ -221,7 +276,14 @@ const GadgetDetails = () => {
 
  </div>
 
- <div className=' mt-4 px-4 py-4 col-sm-12 col-md-12 hover:bg-slate-50 '> Current Condition:  <span className='font-bold'>            {myGadgetData.currentCondition} Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+ <div className=' mt-4 px-4 py-4 col-sm-12 col-md-12 hover:bg-slate-50 '> 
+ <div className='flex justify-between'>
+   <div> Current Condition:</div> 
+   <div data-bs-toggle="modal"
+                        data-bs-target="#update-current-condition">  <i className="fa-solid fa-pencil text-primary "></i> </div>
+
+     </div>
+   <span className='font-bold'>          {myGadgetData.currentCondition} 
  </span>
  </div>
 
@@ -246,6 +308,13 @@ const GadgetDetails = () => {
 
 
 
+  <div className='flex justify-end my-5'> 
+  {/* <button className='btn-primary btn bg-gradient'> Update</button> */}
+  <button className='btn-danger btn btn-sm bg-gradient' onClick={handleDelete}> Delete Post</button>
+
+
+
+</div> 
 </div>
 
 
@@ -256,6 +325,407 @@ const GadgetDetails = () => {
 
 
 
+<div
+        className="modal fade"
+        id="update-phone"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        
+        <div className="modal-dialog modal-dialog-centered">
+      
+       
+          <div className="modal-content">
+          <form onSubmit={updateDetails}>
+            <div className="modal-header">
+              <h5
+                className="modal-title "
+                style={{ color: "#192035" }}
+                id="exampleModalLabel"
+              >
+                Update Phone
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            
+              <div className="mb-3 ">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Phone:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control "
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                name="sellerPhone"
+                                
+                                onChange={handleInfoUpdate}
+                                minLength="10"
+                                maxLength="30"
+                               
+                                
+
+                                required
+                            />
+                        </div>
+             
+              
+            </div>
+            <div className="modal-footer">
+            <button
+                type="submit"
+                className="btn btn-success btn-sm bg-gradient"
+                
+                
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm bg-gradient text-white"
+                data-bs-dismiss="modal"
+                style={{ background: "#192035" }}
+              >
+                Close
+              </button>
+            </div>
+            </form> 
+          </div>
+        
+        </div>
+      
+        </div>
+
+
+
+        <div
+        className="modal fade"
+        id="update-email"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        
+        <div className="modal-dialog modal-dialog-centered">
+      
+       
+          <div className="modal-content">
+          <form onSubmit={updateDetails}>
+            <div className="modal-header">
+              <h5
+                className="modal-title "
+                style={{ color: "#192035" }}
+                id="exampleModalLabel"
+              >
+                Update Email
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            
+              <div className="mb-3 ">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Email:
+                            </label>
+                            <input
+                                type="email"
+                                className="form-control "
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                name="sellerEmail"
+                                
+                                onChange={handleInfoUpdate}
+                                minLength="5"
+                                maxLength="100"
+                               
+                                
+
+                                required
+                            />
+                        </div>
+             
+              
+            </div>
+            <div className="modal-footer">
+            <button
+                type="submit"
+                className="btn btn-success btn-sm bg-gradient"
+                
+                
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm bg-gradient text-white"
+                data-bs-dismiss="modal"
+                style={{ background: "#192035" }}
+              >
+                Close
+              </button>
+            </div>
+            </form> 
+          </div>
+        
+        </div>
+      
+        </div>
+
+        <div
+        className="modal fade"
+        id="update-current-condition"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        
+        <div className="modal-dialog modal-dialog-centered">
+      
+       
+          <div className="modal-content">
+          <form onSubmit={updateDetails}>
+            <div className="modal-header">
+              <h5
+                className="modal-title "
+                style={{ color: "#192035" }}
+                id="exampleModalLabel"
+              >
+                Update Current Condition
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            
+              <div className="mb-3 ">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Current Condition:
+                            </label>
+                           
+                            <textarea type="text"
+                                className="form-control "
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                name="currentCondition"
+                               
+                                
+                                onChange={handleInfoUpdate}
+                                minLength="5"
+                                maxLength="400"
+                               
+                                
+
+                                required>
+                              {myGadgetData.currentCondition}
+                            </textarea>
+                        </div>
+             
+              
+            </div>
+            <div className="modal-footer">
+            <button
+                type="submit"
+                className="btn btn-success btn-sm bg-gradient"
+                
+                
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm bg-gradient text-white"
+                data-bs-dismiss="modal"
+                style={{ background: "#192035" }}
+              >
+                Close
+              </button>
+            </div>
+            </form> 
+          </div>
+        
+        </div>
+      
+        </div>
+
+
+        <div
+        className="modal fade"
+        id="update-resale-price"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        
+        <div className="modal-dialog modal-dialog-centered">
+      
+       
+          <div className="modal-content">
+          <form onSubmit={updateDetails}>
+            <div className="modal-header">
+              <h5
+                className="modal-title "
+                style={{ color: "#192035" }}
+                id="exampleModalLabel"
+              >
+                Update Resale Price
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            
+              <div className="mb-3 ">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Updated Resale Price:
+                            </label>
+                           
+                          
+
+                            <input type="number"
+                                className="form-control "
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                name="resalePrice"
+                               
+                                
+                                onChange={handleInfoUpdate}
+                                min = "1"
+                                placeholder="in $"
+
+                               
+                               
+                                
+
+                                required />
+                        </div>
+             
+              
+            </div>
+            <div className="modal-footer">
+            <button
+                type="submit"
+                className="btn btn-success btn-sm bg-gradient"
+                
+                
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm bg-gradient text-white"
+                data-bs-dismiss="modal"
+                style={{ background: "#192035" }}
+              >
+                Close
+              </button>
+            </div>
+            </form> 
+          </div>
+        
+        </div>
+      
+        </div>
+
+
+        <div
+        className="modal fade"
+        id="update-salient-features"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        
+        <div className="modal-dialog modal-dialog-centered">
+      
+       
+          <div className="modal-content">
+          <form onSubmit={updateDetails}>
+            <div className="modal-header">
+              <h5
+                className="modal-title "
+                style={{ color: "#192035" }}
+                id="exampleModalLabel"
+              >
+                Update Features
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+            
+              <div className="mb-3 ">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
+                                Features:
+                            </label>
+                           
+                            <textarea type="text"
+                                className="form-control "
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                name="gadgetFeatures"
+                               
+                                
+                                onChange={handleInfoUpdate}
+                                minLength="5"
+                                maxLength="400"
+                               
+                                
+
+                                required>
+                              
+                            </textarea>
+                        </div>
+             
+              
+            </div>
+            <div className="modal-footer">
+            <button
+                type="submit"
+                className="btn btn-success btn-sm bg-gradient"
+                
+                
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm bg-gradient text-white"
+                data-bs-dismiss="modal"
+                style={{ background: "#192035" }}
+              >
+                Close
+              </button>
+            </div>
+            </form> 
+          </div>
+        
+        </div>
+      
+        </div>
 
 
 

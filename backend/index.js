@@ -20,7 +20,7 @@ connecttoDB()
 
 app.use(cors({
     origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type"]
 }))
 
@@ -95,6 +95,26 @@ app.delete('/allgadgets/:id', async (req, res) => {
 
     } catch (err) {
        res.status(500).json({message: "error deleting gadget"})
+    }
+})
+
+
+app.patch('/allgadgets/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const updates = req.body
+        const updateInfo = await Gadget.findByIdAndUpdate(id, updates, {new: true, runValidators: true})
+        if (!updateInfo) {
+            return res.status(404).json({message: "Update not found"})
+        }
+        console.log(updates)
+
+        console.log(updateInfo)
+
+        res.json({message: "Gadget updated!"})
+ 
+    } catch (err) {
+        res.status(500).json({message: "Error updating info"})
     }
 })
 
