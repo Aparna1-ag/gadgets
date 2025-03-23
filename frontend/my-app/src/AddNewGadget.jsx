@@ -5,6 +5,7 @@ import img2 from "./assets/custom_bg.png";
 import { Link } from "react-router";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router";
+import Footer from "./footrer";
 
 
 const AddNewGadget = () => {
@@ -409,9 +410,16 @@ const AddNewGadget = () => {
                         </button>
                     </div>
                 </form>
+
+               
             </div>
+
+          
          </div>
 
+
+      
+         <Footer />
 
 
 

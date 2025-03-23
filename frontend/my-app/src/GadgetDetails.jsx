@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router'
 import Navbar from './Navbar'
+import Footer from './footrer'
 
 const GadgetDetails = () => {
 
@@ -308,6 +309,9 @@ const GadgetDetails = () => {
   </div>
 
 
+ 
+
+
 
 
 
@@ -325,7 +329,12 @@ const GadgetDetails = () => {
 
 
 
+
+
+
 </div>
+
+<Footer />
 
 
 

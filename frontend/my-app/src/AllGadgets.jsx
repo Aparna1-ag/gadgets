@@ -4,6 +4,7 @@ import img2 from "./assets/custom_bg.png";
 // import { gadgetData } from './gadgetData'
 import { Link } from "react-router";
 import Navbar from "./Navbar";
+import Footer from "./footrer";
 
 const AllGadgets = () => {
   const [email, setEmail] = useState("");
@@ -273,10 +274,16 @@ const paginationBtns = btnsArray.map((item, index) =>  {
         
         </div>
       </div>
+
+      <Footer className="text-white" />
         </header>
+      
+
+        
 
        
       </div>
+    
 
       </div>
 
