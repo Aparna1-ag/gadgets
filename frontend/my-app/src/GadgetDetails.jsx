@@ -44,7 +44,7 @@ const GadgetDetails = () => {
     }, [])
 
     const calcPercentage = (myGadgetData.resalePrice ) * 100/myGadgetData.originalPrice
-    const markUpPercentage = calcPercentage.toFixed(2)
+    const markUpPercentage = calcPercentage.toFixed(1)
 
     let featuresArray = []
     if (myGadgetData.gadgetFeatures) {
