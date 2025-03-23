@@ -313,7 +313,9 @@ const GadgetDetails = () => {
 
   <div className='flex justify-end my-5'> 
   {/* <button className='btn-primary btn bg-gradient'> Update</button> */}
-  <button className='btn-danger btn btn-sm bg-gradient' onClick={handleDelete}> Delete Post</button>
+  <button className='btn-danger btn btn-sm bg-gradient' onClick={() => {
+    confirm("Are you sure you want to delete this gadget?") && handleDelete()
+  }}> Delete Post</button>
 
 
 
