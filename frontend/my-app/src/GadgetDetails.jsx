@@ -214,7 +214,7 @@ const GadgetDetails = () => {
  <div className='row'>
 
  <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-100   hover:bg-blue-50 '>
-   <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>({markUpPercentage}%)</span>
+   <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>{ myGadgetData.originalPrice? `(${markUpPercentage}%)` : ''}</span>
   </span>
 <span  data-bs-toggle="modal"
                         data-bs-target="#update-resale-price"  >  <i title='Update Resale Price' className="fa-solid fa-pencil text-primary ml-5"></i> 
@@ -690,6 +690,7 @@ const GadgetDetails = () => {
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 name="gadgetFeatures"
+                                placeholder='Type commas to separate points'
                                
                                 
                                 onChange={handleInfoUpdate}

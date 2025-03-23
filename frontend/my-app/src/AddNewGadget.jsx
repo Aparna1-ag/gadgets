@@ -418,7 +418,7 @@ const AddNewGadget = () => {
 
 
 
-            <div className={`fixed top-0 left-0 h-screen w-screen bg-transparent flex justify-center items-center success-screen ${successModalDisplay}`}>
+            <div className={`fixed top-0 left-0 h-screen w-screen flex justify-center items-center success-screen ${successModalDisplay}`}>
 
                 <div className=" bg-white flex justify-center items-center shadow-xl shadow-blue-300 rounded-sm" style={{ width: '700px', height: '400px' }}>
 
@@ -435,7 +435,7 @@ const AddNewGadget = () => {
                         </div>
 
                         <div className="flex justify-center">
-                            <button className="btn btn-secondary bg-gradient mt-24" onClick={handleClosePopup}>Close</button>
+                            <button className="btn btn-secondary bg-gradient mt-6" onClick={handleClosePopup}>Close</button>
                         </div>
                     </div>
 
