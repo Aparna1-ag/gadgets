@@ -24,6 +24,104 @@ app.use(cors({
     allowedHeaders: ["Content-Type"]
 }))
 
+
+
+
+
+
+
+
+
+
+app.post("/createuser", async (req, res) => {
+
+    const {name, age, email, password, date} = req.body
+    
+    try {
+         const newUser = await Customer.create({
+            name: name,
+            age : age,
+            email : email,
+            password : password,
+            dateCreated: date
+         })
+
+        res.send("New User Created" + newUser)
+        console.log("new user created" + newUser)
+    } catch (err)  {
+        console.log("Error inserting user:", err);  
+        res.status(500).json({message: "Error creating new user"});
+    }
+
+   
+})
+
+app.post('/allgadgets', async (req, res) => {
+    const {gadgetName, brand, model, resalePrice, originalPrice, salerName, sellerEmail, sellerPhone, datePosted, color, originalPurchaseDate, currentCondition, gadgetFeatures, imgUrl} = req.body
+    try {
+        const myGadget = await Gadget.create({
+            gadgetName: gadgetName, brand: brand, model: model, resalePrice: resalePrice, originalPrice: originalPrice, salerName: salerName, sellerEmail: sellerEmail, sellerPhone: sellerPhone, datePosted: datePosted, color: color, originalPurchaseDate: originalPurchaseDate, currentCondition: currentCondition, gadgetFeatures: gadgetFeatures, imgUrl: imgUrl
+        })
+        res.status(200).send({success: true, message: `Your gadget ${brand} - ${model} has been posted successfully!`})
+
+        console.log("Gadget successfully created!" + myGadget)
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({message: "Error creating new gadget"})
+    }
+})
+
+
+app.get('/allgadgets', async (req, res) => {
+   try {
+    const myDbData = await Gadget.find()
+    res.json(myDbData)
+   } catch (err) {
+    res.status(500).json({message : "Error fetching gadgets"})
+   }
+})
+
+
+app.delete('/allgadgets/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+    const itemDeleted = await Gadget.findByIdAndDelete(id)
+
+    if (!itemDeleted) {
+        return res.status(404).json({message: "Item not found"})
+    }
+   
+    res.json({message: "item deleted"}) 
+
+   
+
+    } catch (err) {
+       res.status(500).json({message: "error deleting gadget"})
+    }
+})
+
+
+app.patch('/allgadgets/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const updates = req.body
+        const updateInfo = await Gadget.findByIdAndUpdate(id, updates, {new: true, runValidators: true})
+        if (!updateInfo) {
+            return res.status(404).json({message: "Update not found"})
+        }
+        console.log(updates)
+
+        console.log(updateInfo)
+
+        res.json({message: "Gadget updated!"})
+ 
+    } catch (err) {
+        res.status(500).json({message: "Error updating info"})
+    }
+})
+
+
 const gadgetDataaa = [
     {
     
@@ -200,101 +298,6 @@ const gadgetDataaa = [
 
 
 Gadget.insertMany(gadgetDataaa)
-
-
-
-
-
-
-
-
-app.post("/createuser", async (req, res) => {
-
-    const {name, age, email, password, date} = req.body
-    
-    try {
-         const newUser = await Customer.create({
-            name: name,
-            age : age,
-            email : email,
-            password : password,
-            dateCreated: date
-         })
-
-        res.send("New User Created" + newUser)
-        console.log("new user created" + newUser)
-    } catch (err)  {
-        console.log("Error inserting user:", err);  
-        res.status(500).json({message: "Error creating new user"});
-    }
-
-   
-})
-
-app.post('/allgadgets', async (req, res) => {
-    const {gadgetName, brand, model, resalePrice, originalPrice, salerName, sellerEmail, sellerPhone, datePosted, color, originalPurchaseDate, currentCondition, gadgetFeatures, imgUrl} = req.body
-    try {
-        const myGadget = await Gadget.create({
-            gadgetName: gadgetName, brand: brand, model: model, resalePrice: resalePrice, originalPrice: originalPrice, salerName: salerName, sellerEmail: sellerEmail, sellerPhone: sellerPhone, datePosted: datePosted, color: color, originalPurchaseDate: originalPurchaseDate, currentCondition: currentCondition, gadgetFeatures: gadgetFeatures, imgUrl: imgUrl
-        })
-        res.status(200).send({success: true, message: `Your gadget ${brand} - ${model} has been posted successfully!`})
-
-        console.log("Gadget successfully created!" + myGadget)
-
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({message: "Error creating new gadget"})
-    }
-})
-
-
-app.get('/allgadgets', async (req, res) => {
-   try {
-    const myDbData = await Gadget.find()
-    res.json(myDbData)
-   } catch (err) {
-    res.status(500).json({message : "Error fetching gadgets"})
-   }
-})
-
-
-app.delete('/allgadgets/:id', async (req, res) => {
-    try {
-        const { id } = req.params
-    const itemDeleted = await Gadget.findByIdAndDelete(id)
-
-    if (!itemDeleted) {
-        return res.status(404).json({message: "Item not found"})
-    }
-   
-    res.json({message: "item deleted"}) 
-
-   
-
-    } catch (err) {
-       res.status(500).json({message: "error deleting gadget"})
-    }
-})
-
-
-app.patch('/allgadgets/:id', async (req, res) => {
-    try {
-        const { id } = req.params
-        const updates = req.body
-        const updateInfo = await Gadget.findByIdAndUpdate(id, updates, {new: true, runValidators: true})
-        if (!updateInfo) {
-            return res.status(404).json({message: "Update not found"})
-        }
-        console.log(updates)
-
-        console.log(updateInfo)
-
-        res.json({message: "Gadget updated!"})
- 
-    } catch (err) {
-        res.status(500).json({message: "Error updating info"})
-    }
-})
 
 
 
