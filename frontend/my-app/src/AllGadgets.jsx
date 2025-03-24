@@ -9,6 +9,20 @@ import Footer from "./footrer";
 const AllGadgets = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [timerSecs, setTimerSecs] = useState(60)
+
+
+  useEffect(() => {
+  const timerInterval =  setInterval(() => {
+    setTimerSecs(count => count- 1)
+   }, 1000)
+
+
+   return () =>   clearInterval(timerInterval)
+   
+   
+
+  }, [])
 
   const [fetchedData, setFetchedData] = useState([]);
       const [errorMessage, setErrorMessage] = useState("")
@@ -78,6 +92,8 @@ const paginationBtns = btnsArray.map((item, index) =>  {
     const fetchgadgetData = async () => {
       try {
         const fetchResponse = await fetch("https://ultimategadgeting.onrender.com/allgadgets");
+        // const fetchResponse = await fetch("http://localhost:3000/allgadgets");
+
         const gadgetData = await fetchResponse.json();
         if (fetchResponse.ok) {
           setFetchedData(gadgetData.reverse());
@@ -144,12 +160,26 @@ const paginationBtns = btnsArray.map((item, index) =>  {
 {
     fetchedData.length == 0 && 
     <div className="text-3xl text-white text-center w-full">
-      <p className="text-center">{errorMessage}</p>
-        Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.
-        <div className="flex justify-center mt-6" onClick={() => {window.location.reload()}}> 
-           {/* <img src="https://png.pngtree.com/element_our/20190601/ourmid/pngtree-white-refresh-icon-image_1338657.jpg" className="w-20 h-20" />  */}
+<div className="text-center ">              Please wait for Render's free tier server to start
+</div>    
+<div className="text-center mt-4">             {timerSecs}s
+
+<div className="flex justify-center mt-6" onClick={() => {window.location.reload()}}> 
            <i className="fa-solid fa-rotate-right text-white text-5xl"   ></i>
            </div>
+</div>              
+
+
+      {/* <p className="text-center">{errorMessage}</p>
+
+
+        Oops! Seems like an error. Unable to fetch Gadgets. Please refresh and try again.
+
+
+
+        <div className="flex justify-center mt-6" onClick={() => {window.location.reload()}}> 
+           <i className="fa-solid fa-rotate-right text-white text-5xl"   ></i>
+           </div> */}
         </div>
    }
 

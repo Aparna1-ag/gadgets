@@ -158,7 +158,7 @@ const GadgetDetails = () => {
 
 
 
-<div className='w-5/6 mx-auto py-6 mt-24'>
+<div className=' w-11/12 md:w-5/6 mx-auto py-6 mt-24'>
 
 <h1 className='gadget-name mt-6 mb-20'>{myGadgetData.brand}  -
 {myGadgetData.model} </h1>
@@ -214,19 +214,19 @@ const GadgetDetails = () => {
 
  <div className='row'>
 
- <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-100   hover:bg-blue-50 '>
+ <div className='md:px-4 py-4 mt-2  col-sm-12 col-md-4 text-center shadow-md bg-blue-200 md:bg-blue-100   hover:bg-blue-50 '>
    <span className='  text-blue-600'>Resale Price: </span> <span className='font-bold'>            ${myGadgetData.resalePrice}  <span className='text-secondary font-bold'>{ myGadgetData.originalPrice? `(${markUpPercentage}%)` : ''}</span>
   </span>
 <span  data-bs-toggle="modal"
                         data-bs-target="#update-resale-price"  >  <i title='Update Resale Price' className="fa-solid fa-pencil text-primary ml-5"></i> 
 </span> 
  </div>
- <div className=' md:flex col-sm-12 col-md-8 '>
+ <div className=' md:flex  col-sm-12 col-md-8 '>
  <div className='px-4 text-center col-sm-12 col-md-4 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Original Price: </span> <span className='font-bold'>            ${myGadgetData.originalPrice}  
   </span>
 
   </div>
-  <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({prodAgeYrs <= 0 ? '' : prodAgeYrs} {prodAgeYrs ? 'Yr' : ''} {prodAgeMonths} Mos )</span>
+  <div className='md:ml-3 text-center px-4 col-sm-12 col-md-8 py-4 mt-2 shadow-md bg-blue-100  hover:bg-blue-50 '> <span className='text-primary'>Originally Purchased On: </span> <span className='font-bold'>            {myGadgetData.originalPurchaseDate}    <span className='text-secondary'> ({prodAgeYrs <= 0 ? '' : `${prodAgeYrs}Yrs`} {prodAgeMonths} Mos )</span>
   </span>
 
   </div>
